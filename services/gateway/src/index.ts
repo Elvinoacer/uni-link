@@ -380,6 +380,26 @@ const server = app.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`🚀 API Gateway running on http://0.0.0.0:${PORT}`);
   console.log(`📊 Health check available at http://0.0.0.0:${PORT}/health`);
   console.log(`→ Proxying auth to ${USER_SERVICE_URL}`);
+
+  // Connectivity Probe
+  const probeUserService = async () => {
+    try {
+      console.log(`[Connectivity Probe] Pinging User Service at ${USER_SERVICE_URL}/health...`);
+      const response = await fetch(`${USER_SERVICE_URL}/health`);
+      if (response.ok) {
+        console.log(`[Connectivity Probe] ✅ User Service is reachable and healthy (Status: ${response.status})`);
+      } else {
+        console.error(`[Connectivity Probe] ⚠️ User Service returned status ${response.status}`);
+      }
+    } catch (err: any) {
+      console.error(`[Connectivity Probe] ❌ Failed to reach User Service at ${USER_SERVICE_URL}`);
+      console.error(`[Connectivity Probe] Error: ${err.message}`);
+      if (err.cause) console.error(`[Connectivity Probe] Cause:`, err.cause);
+    }
+  };
+  
+  // Initial probe delay to allow for startup jitter
+  setTimeout(probeUserService, 5000);
 });
 
 // Graceful shutdown
