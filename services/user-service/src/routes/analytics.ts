@@ -10,10 +10,10 @@ router.get('/trends', async (req: Request, res: Response) => {
   try {
     const limit = parseInt(req.query.limit as string) || 10;
     const trends = await analyticsService.getTrendingHashtags(limit);
-    res.json({ success: true, data: trends });
+    return res.json({ success: true, data: trends });
   } catch (error) {
     logger.error('Get trends error:', error);
-    res.status(500).json({ success: false, error: 'Internal server error' });
+    return res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
 
@@ -24,10 +24,10 @@ router.get('/search', async (req: Request, res: Response) => {
       if (!query) return res.json({ success: true, data: [] });
 
       const results = await analyticsService.searchHashtags(query);
-      res.json({ success: true, data: results });
+      return res.json({ success: true, data: results });
     } catch (error) {
       logger.error('Search hashtags error:', error);
-      res.status(500).json({ success: false, error: 'Internal server error' });
+      return res.status(500).json({ success: false, error: 'Internal server error' });
     }
   });
 

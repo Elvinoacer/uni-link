@@ -191,7 +191,7 @@ export class RAGService {
         await prisma.resourceEmbedding.create({
           data: {
             resourceId,
-            pineconeId: ids[i],
+            pineconeId: ids[i]!,
             chunkIndex: i,
             pageNumber: (doc?.metadata?.pageNumber as number) || null,
             chunkText: doc?.pageContent?.substring(0, 500) || '', // Store first 500 chars
@@ -243,7 +243,7 @@ export class RAGService {
       
       logger.info(`[RAG Query] Retrieved ${docs.length} documents`);
       if (docs.length > 0) {
-        logger.info(`[RAG Query] First doc title: ${docs[0].metadata?.title || 'N/A'}, content length: ${docs[0].pageContent?.length || 0}`);
+        logger.info(`[RAG Query] First doc title: ${docs[0]?.metadata?.title || 'N/A'}, content length: ${docs[0]?.pageContent?.length || 0}`);
       }
 
       if (docs.length === 0) {

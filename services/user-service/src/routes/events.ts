@@ -154,7 +154,7 @@ router.post('/:id/rsvp', async (req: Request, res: Response) => {
         const userId = getUserId(req);
         if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-        const id = req.params.id;
+        const id = req.params.id as string;
         const { status } = req.body; // 'going' | 'not_going'
 
         if (!status || (status !== 'going' && status !== 'not_going')) {

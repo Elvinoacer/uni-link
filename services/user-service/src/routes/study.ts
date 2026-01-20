@@ -14,6 +14,7 @@ const getUserId = (req: Request): string | null => {
   if (authHeader?.startsWith('Bearer ')) {
     try {
       const token = authHeader.split(' ')[1];
+      if (!token) return null;
       const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret') as any;
       return decoded.id || decoded.userId;
     } catch {
@@ -24,7 +25,7 @@ const getUserId = (req: Request): string | null => {
 };
 
 // Optional auth middleware (doesn't fail if not authenticated)
-const optionalAuth = (req: Request, res: Response, next: NextFunction): void => {
+const optionalAuth = (req: Request, _res: Response, next: NextFunction): void => {
   const userId = getUserId(req);
   if (userId) {
     (req as any).userId = userId;
@@ -86,7 +87,7 @@ router.get('/schools', optionalAuth, async (req: Request, res: Response) => {
  */
 router.get('/schools/:id', optionalAuth, async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
 
     const school = await prisma.school.findUnique({
       where: { id },
@@ -211,7 +212,7 @@ router.get('/courses', optionalAuth, async (req: Request, res: Response) => {
  */
 router.get('/courses/:id', optionalAuth, async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
 
     const course = await prisma.course.findUnique({
       where: { id },
@@ -346,7 +347,7 @@ router.get('/years', optionalAuth, async (req: Request, res: Response) => {
  */
 router.get('/years/:id', optionalAuth, async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
 
     const year = await prisma.yearOfStudy.findUnique({
       where: { id },
@@ -476,7 +477,7 @@ router.get('/units', optionalAuth, async (req: Request, res: Response) => {
  */
 router.get('/units/:id', optionalAuth, async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
 
     const unit = await prisma.unit.findUnique({
       where: { id },
@@ -578,7 +579,7 @@ router.post('/units', requireAuth, async (req: Request, res: Response) => {
 /**
  * POST /study/seed - Seed initial data (development only)
  */
-router.post('/seed', requireAuth, async (req: Request, res: Response) => {
+router.post('/seed', requireAuth, async (_req: Request, res: Response) => {
   try {
     // Create or get university
     let university = await prisma.university.findFirst();
@@ -649,7 +650,7 @@ router.post('/seed', requireAuth, async (req: Request, res: Response) => {
 
     const createdSchools = [];
     for (let i = 0; i < schoolsData.length; i++) {
-      const schoolData = schoolsData[i];
+      const schoolData = schoolsData[i]!;
       
       // Check if school already exists
       const existing = await prisma.school.findFirst({

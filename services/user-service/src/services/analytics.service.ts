@@ -1,5 +1,5 @@
 import { prisma } from '../lib/prisma';
-import { logger } from '../utils/logger';
+// import { logger } from '../utils/logger';
 
 export class AnalyticsService {
   async getTrendingHashtags(limit = 10) {

@@ -37,7 +37,7 @@ export class CourseService {
             orderBy: { name: 'asc' },
             include: {
               _count: {
-                select: { yearsOfStudy: true },
+                select: { courses: true },
               },
             },
           },
@@ -84,7 +84,7 @@ export class CourseService {
         include: {
           university: true,
           _count: {
-            select: { yearsOfStudy: true },
+            select: { courses: true },
           },
         },
       });
@@ -104,15 +104,11 @@ export class CourseService {
         where: { id },
         include: {
           university: true,
-          yearsOfStudy: {
+          courses: {
+            orderBy: { code: 'asc' },
             include: {
-              courses: {
-                orderBy: { code: 'asc' },
-                include: {
-                  _count: {
-                    select: { resources: true },
-                  },
-                },
+              _count: {
+                select: { yearsOfStudy: true }, // Count years instead of resources if that was intent? Or resources via years?
               },
             },
           },
@@ -120,11 +116,9 @@ export class CourseService {
       });
       
       if (school) {
-        // Flatten courses from years for legacy view
-        const courses = school.yearsOfStudy.flatMap(y => y.courses);
         return {
           ...school,
-          courses,
+          courses: school.courses,
         };
       }
       return school;
@@ -163,16 +157,12 @@ export class CourseService {
 
       if (departmentId) {
         // Treat departmentId as schoolId
-        where.yearOfStudy = {
-          schoolId: departmentId
-        };
+        where.schoolId = departmentId;
       }
 
       if (universityId) {
-        where.yearOfStudy = {
-          school: {
-            universityId: universityId,
-          }
+        where.school = {
+          universityId: universityId,
         };
       }
 
@@ -187,25 +177,19 @@ export class CourseService {
         where,
         orderBy: { code: 'asc' },
         include: {
-          yearOfStudy: {
+          school: {
             include: {
-              school: {
-                include: {
-                  university: true,
-                },
-              },
+              university: true,
             },
           },
-          _count: {
-            select: { resources: true },
-          },
+          // _count removed (resources not directly related)
         },
       });
       
       // Map response to match legacy structure if needed
       return courses.map(c => ({
         ...c,
-        department: c.yearOfStudy?.school,
+        department: (c as any).school,
       }));
     } catch (error) {
       logger.error('Error fetching courses:', error);
@@ -221,25 +205,19 @@ export class CourseService {
       const course = await prisma.course.findUnique({
         where: { id },
         include: {
-          yearOfStudy: {
+          school: {
             include: {
-              school: {
-                include: {
-                  university: true,
-                },
-              },
+              university: true,
             },
           },
-          _count: {
-            select: { resources: true },
-          },
+          // _count removed (resources not directly related)
         },
       });
       
       if (course) {
         return {
           ...course,
-          department: course.yearOfStudy?.school,
+          department: (course as any).school,
         };
       }
       return course;
@@ -254,47 +232,27 @@ export class CourseService {
    * NOTE: This is legacy and might fail if defaulting logic isn't perfect, 
    * but we'll try to get the first year of the school.
    */
-  async createCourse(departmentId: string, code: string, name: string, description?: string) {
+    async createCourse(departmentId: string, code: string, name: string, description?: string) {
     try {
-      // Find the school (departmentId is schoolId)
       const school = await prisma.school.findUnique({
-        where: { id: departmentId },
-        include: { yearsOfStudy: { orderBy: { year: 'asc' }, take: 1 } }
+        where: { id: departmentId }
       });
 
       if (!school) {
         throw new Error('School (Department) not found');
       }
 
-      let yearOfStudyId = school.yearsOfStudy[0]?.id;
-
-      // If no year exists, create Year 1
-      if (!yearOfStudyId) {
-        const year1 = await prisma.yearOfStudy.create({
-          data: {
-            schoolId: departmentId,
-            year: 1,
-            name: 'Year 1'
-          }
-        });
-        yearOfStudyId = year1.id;
-      }
-
       const course = await prisma.course.create({
         data: { 
-          yearOfStudyId, 
+          schoolId: departmentId, 
           code, 
           name, 
           description 
         },
         include: {
-          yearOfStudy: {
+          school: {
             include: {
-              school: {
-                include: {
-                  university: true,
-                },
-              },
+              university: true,
             },
           },
         },
@@ -302,7 +260,7 @@ export class CourseService {
       
       return {
         ...course,
-        department: course.yearOfStudy?.school
+        department: course.school
       };
     } catch (error) {
       logger.error('Error creating course:', error);

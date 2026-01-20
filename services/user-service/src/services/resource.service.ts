@@ -474,7 +474,15 @@ export class ResourceService {
               isVerified: true,
             },
           },
-          course: true,
+          unit: {
+            include: {
+              yearOfStudy: {
+                include: {
+                  course: true,
+                },
+              },
+            },
+          },
         },
       });
 

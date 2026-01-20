@@ -15,6 +15,7 @@ const getUserId = (req: Request): string | null => {
   if (authHeader?.startsWith('Bearer ')) {
     try {
       const token = authHeader.split(' ')[1];
+      if (!token) return null;
       const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret') as any;
       return decoded.id || decoded.userId;
     } catch {
@@ -42,6 +43,7 @@ const requireAdmin = async (req: Request, res: Response, next: Function) => {
 
   (req as any).userId = userId;
   next();
+  return;
 };
 
 /**
@@ -62,7 +64,7 @@ router.get('/universities', async (_req: Request, res: Response) => {
  */
 router.get('/universities/:id', async (req: Request, res: Response) => {
   try {
-    const university = await courseService.getUniversityById(req.params.id);
+    const university = await courseService.getUniversityById(req.params.id as string);
     if (!university) {
       return res.status(404).json({ success: false, error: 'University not found' });
     }
@@ -110,7 +112,7 @@ router.get('/departments', async (req: Request, res: Response) => {
  */
 router.get('/departments/:id', async (req: Request, res: Response) => {
   try {
-    const department = await courseService.getDepartmentById(req.params.id);
+    const department = await courseService.getDepartmentById(req.params.id as string);
     if (!department) {
       return res.status(404).json({ success: false, error: 'Department not found' });
     }
@@ -183,7 +185,7 @@ router.get('/semesters', async (_req: Request, res: Response) => {
  */
 router.get('/:id', async (req: Request, res: Response) => {
   try {
-    const course = await courseService.getCourseById(req.params.id);
+    const course = await courseService.getCourseById(req.params.id as string);
     if (!course) {
       return res.status(404).json({ success: false, error: 'Course not found' });
     }

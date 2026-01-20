@@ -221,7 +221,7 @@ router.get('/following', async (req: Request, res: Response) => {
 // GET /communities/posts/:postId - Get community post details
 router.get('/posts/:postId', async (req: Request, res: Response) => {
   try {
-    const { postId } = req.params;
+    const { postId } = req.params as { postId: string };
     const userId = getUserId(req);
 
     const post = await prisma.communityPost.findUnique({
@@ -303,7 +303,7 @@ router.get('/posts/:postId', async (req: Request, res: Response) => {
 // POST /communities/posts/:postId/like - Like/Unlike community post
 router.post('/posts/:postId/like', async (req: Request, res: Response) => {
   try {
-    const { postId } = req.params;
+    const { postId } = req.params as { postId: string };
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
@@ -347,7 +347,7 @@ router.post('/posts/:postId/like', async (req: Request, res: Response) => {
 // POST /communities/posts/:postId/reply - Reply to community post
 router.post('/posts/:postId/reply', async (req: Request, res: Response) => {
     try {
-        const { postId } = req.params;
+        const { postId } = req.params as { postId: string };
         const userId = getUserId(req);
         if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
@@ -393,7 +393,7 @@ router.post('/posts/:postId/reply', async (req: Request, res: Response) => {
 });
 router.get('/:id', async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const userId = getUserId(req);
 
     const community = await prisma.community.findUnique({
@@ -459,7 +459,7 @@ router.patch('/:id', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const body = createCommunitySchema.partial().parse(req.body);
 
     const community = await prisma.community.findUnique({ where: { id } });
@@ -491,7 +491,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
 
     const community = await prisma.community.findUnique({ where: { id } });
     if (!community) {
@@ -516,7 +516,7 @@ router.post('/:id/follow', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
 
     const community = await prisma.community.findUnique({ where: { id } });
     if (!community) {
@@ -557,7 +557,7 @@ router.post('/:id/unfollow', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
 
     await prisma.communityFollow.deleteMany({
       where: {
@@ -576,7 +576,7 @@ router.post('/:id/unfollow', async (req: Request, res: Response) => {
 // GET /communities/:id/posts - Get community posts
 router.get('/:id/posts', async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 20;
     const skip = (page - 1) * limit;
@@ -649,7 +649,7 @@ router.post('/:id/posts', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const body = createPostSchema.parse(req.body);
 
     const community = await prisma.community.findUnique({ where: { id } });
@@ -695,7 +695,7 @@ router.post('/:id/links', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const body = addLinkSchema.parse(req.body);
 
     const community = await prisma.community.findUnique({ where: { id } });
@@ -731,7 +731,7 @@ router.delete('/:id/links/:linkId', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const { id, linkId } = req.params;
+    const { id, linkId } = req.params as { id: string; linkId: string };
 
     const community = await prisma.community.findUnique({ where: { id } });
     if (!community) {

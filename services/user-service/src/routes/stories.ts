@@ -59,7 +59,7 @@ router.post('/:id/view', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const storyId = req.params.id;
+    const storyId = req.params.id as string;
     await storyService.viewStory(storyId, userId);
     return res.json({ success: true });
   } catch (error) {
@@ -74,7 +74,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const storyId = req.params.id;
+    const storyId = req.params.id as string;
     await storyService.deleteStory(storyId, userId);
     return res.json({ success: true });
   } catch (error) {
@@ -89,7 +89,7 @@ router.post('/:id/like', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const storyId = req.params.id;
+    const storyId = req.params.id as string;
     await storyService.likeStory(storyId, userId);
     return res.json({ success: true });
   } catch (error) {
@@ -104,7 +104,7 @@ router.delete('/:id/like', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const storyId = req.params.id;
+    const storyId = req.params.id as string;
     await storyService.unlikeStory(storyId, userId);
     return res.json({ success: true });
   } catch (error) {
@@ -119,7 +119,7 @@ router.get('/:id/engagement', async (req: Request, res: Response) => {
     const userId = getUserId(req);
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
-    const storyId = req.params.id;
+    const storyId = req.params.id as string;
     const engagement = await storyService.getStoryEngagement(storyId, userId);
     return res.json({ success: true, data: engagement });
   } catch (error: any) {

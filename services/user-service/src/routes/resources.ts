@@ -43,6 +43,7 @@ const getUserId = (req: Request): string | null => {
   if (authHeader?.startsWith('Bearer ')) {
     try {
       const token = authHeader.split(' ')[1];
+      if (!token) return null;
       const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret') as any;
       return decoded.id || decoded.userId;
     } catch {
@@ -56,7 +57,8 @@ const getUserId = (req: Request): string | null => {
 const requireAuth = (req: Request, res: Response, next: Function) => {
   const userId = getUserId(req);
   if (!userId) {
-    return res.status(401).json({ success: false, error: 'Unauthorized' });
+    res.status(401).json({ success: false, error: 'Unauthorized' });
+    return;
   }
   (req as any).userId = userId;
   next();
@@ -175,7 +177,7 @@ router.get('/', async (req: Request, res: Response) => {
     const result = await resourceService.getResources(
       {
         courseId: courseId as string,
-        departmentId: departmentId as string,
+        schoolId: departmentId as string,
         universityId: universityId as string,
         semester: semester as string,
         resourceType: resourceType as string,
@@ -200,7 +202,7 @@ router.get('/', async (req: Request, res: Response) => {
 router.get('/:id', async (req: Request, res: Response) => {
   try {
     const userId = getUserId(req);
-    const resource = await resourceService.getResourceById(req.params.id, userId || undefined);
+    const resource = await resourceService.getResourceById(req.params.id as string, userId || undefined);
 
     if (!resource) {
       return res.status(404).json({ success: false, error: 'Resource not found' });
@@ -219,7 +221,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 router.post('/:id/upvote', requireAuth, async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId;
-    const result = await resourceService.toggleUpvote(req.params.id, userId);
+    const result = await resourceService.toggleUpvote(req.params.id as string, userId);
     return res.json({ success: true, data: result });
   } catch (error: any) {
     logger.error('Error toggling upvote:', error);
@@ -239,7 +241,7 @@ router.post('/:id/comments', requireAuth, async (req: Request, res: Response) =>
       return res.status(400).json({ success: false, error: 'Content is required' });
     }
 
-    const comment = await resourceService.addComment(req.params.id, userId, content, replyToId);
+    const comment = await resourceService.addComment(req.params.id as string, userId, content, replyToId);
     return res.status(201).json({ success: true, data: comment });
   } catch (error: any) {
     logger.error('Error adding comment:', error);
@@ -277,7 +279,7 @@ router.put('/:id', requireAuth, upload.single('file'), async (req: Request, res:
       }
     }
 
-    const resource = await resourceService.updateResource(req.params.id, userId, {
+    const resource = await resourceService.updateResource(req.params.id as string, userId, {
       title,
       description,
       fileUrl,
@@ -297,7 +299,7 @@ router.put('/:id', requireAuth, upload.single('file'), async (req: Request, res:
 router.delete('/:id', requireAuth, async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId;
-    const result = await resourceService.deleteResource(req.params.id, userId);
+    const result = await resourceService.deleteResource(req.params.id as string, userId);
     return res.json({ success: true, data: result });
   } catch (error: any) {
     logger.error('Error deleting resource:', error);
@@ -310,12 +312,12 @@ router.delete('/:id', requireAuth, async (req: Request, res: Response) => {
  */
 router.get('/:id/download', async (req: Request, res: Response) => {
   try {
-    const resource = await resourceService.getResourceById(req.params.id);
+    const resource = await resourceService.getResourceById(req.params.id as string);
     if (!resource) {
       return res.status(404).json({ success: false, error: 'Resource not found' });
     }
 
-    await resourceService.incrementDownloadCount(req.params.id);
+    await resourceService.incrementDownloadCount(req.params.id as string);
     return res.json({ success: true, data: { url: resource.fileUrl } });
   } catch (error: any) {
     logger.error('Error downloading resource:', error);
@@ -330,7 +332,7 @@ router.get('/user/:userId', async (req: Request, res: Response) => {
   try {
     const { page = '1', limit = '20' } = req.query;
     const result = await resourceService.getUserResources(
-      req.params.userId,
+      req.params.userId as string,
       parseInt(page as string),
       parseInt(limit as string)
     );

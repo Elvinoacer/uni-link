@@ -106,7 +106,7 @@ router.get('/', async (req: Request, res: Response) => {
         if (cachedPosts) {
             return res.json({
                 success: true,
-                data: JSON.parse(cachedPosts),
+                data: JSON.parse(cachedPosts as string),
                 pagination: { page, limit },
                 source: 'cache'
             });
@@ -357,7 +357,7 @@ router.get('/', async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error('Get posts error:', error);
-    res.status(500).json({ success: false, error: 'Internal server error' });
+    return res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
 
@@ -470,7 +470,7 @@ router.post('/', async (req: Request, res: Response) => {
     // Invalidate global feed cache
     const keys = await redis.keys('feed:global:*');
     if (keys.length > 0) {
-        await redis.del(keys);
+        await redis.del(...keys);
     }
 
     // Hybrid Feed: Fan-out (Push) to Followers
@@ -522,7 +522,7 @@ router.post('/', async (req: Request, res: Response) => {
 // GET /posts/:id - Get single post details
 router.get('/:id', async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     
     const post = await prisma.post.findUnique({
       where: { id },

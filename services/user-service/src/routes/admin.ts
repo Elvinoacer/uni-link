@@ -50,7 +50,7 @@ router.post('/reports/:id/resolve', async (req: Request, res: Response) => {
   try {
     // @ts-ignore
     const userId = req.headers['x-user-id'] as string;
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const { status } = req.body; // 'RESOLVED', 'DISMISSED'
 
     if (!['RESOLVED', 'DISMISSED'].includes(status)) {
@@ -68,7 +68,7 @@ router.post('/reports/:id/resolve', async (req: Request, res: Response) => {
 // POST /admin/users/:id/ban
 router.post('/users/:id/ban', async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const { ban } = req.body; // true or false
 
     const user = await adminService.banUser(id, ban);
@@ -85,7 +85,7 @@ router.post('/users/:id/role', async (req: Request, res: Response) => {
   try {
       // Check super admin here if needed, or assume admin role is enough
       
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const { role } = req.body; // 'USER', 'ADMIN', 'MODERATOR'
 
     if (!['USER', 'ADMIN', 'MODERATOR'].includes(role)) {

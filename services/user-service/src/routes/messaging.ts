@@ -37,7 +37,7 @@ router.get('/conversations', async (req: Request, res: Response) => {
 router.get('/conversations/:id/messages', async (req: Request, res: Response) => {
   try {
     const userId = getUserId(req);
-    const conversationId = req.params.id;
+    const conversationId = req.params.id as string;
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
     const page = parseInt(req.query.page as string) || 1;
@@ -74,7 +74,7 @@ router.post('/messages', async (req: Request, res: Response) => {
 router.delete('/messages/:id', async (req: Request, res: Response) => {
   try {
     const userId = getUserId(req);
-    const messageId = req.params.id;
+    const messageId = req.params.id as string;
     if (!userId) return res.status(401).json({ success: false, error: 'Unauthorized' });
 
     await messagingService.deleteMessage(messageId, userId);

@@ -10,7 +10,7 @@ const router = Router();
 const storage = multer.memoryStorage();
 
 // Filter - Allow broad types, handled by logic
-const fileFilter = (req: Request, _file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+const fileFilter = (_req: Request, _file: Express.Multer.File, cb: multer.FileFilterCallback) => {
   cb(null, true);
 };
 
@@ -34,6 +34,7 @@ const getUserId = (req: Request) => {
   const authHeader = req.headers.authorization;
   if (authHeader && authHeader.startsWith('Bearer ')) {
     const token = authHeader.split(' ')[1];
+    if (!token) return null;
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret') as any;
       return decoded.id || decoded.userId;

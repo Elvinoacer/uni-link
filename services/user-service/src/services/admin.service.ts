@@ -1,5 +1,5 @@
 import { prisma } from '../lib/prisma';
-import { logger } from '../utils/logger';
+// import { logger } from '../utils/logger';
 
 export class AdminService {
   async getReports(status?: string, page = 1, limit = 20) {

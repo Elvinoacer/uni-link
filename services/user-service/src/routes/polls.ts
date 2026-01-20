@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { PollService, CreatePollDto } from '../services/poll.service';
+import { PollService } from '../services/poll.service';
 import { logger } from '../utils/logger';
 import { z } from 'zod';
 

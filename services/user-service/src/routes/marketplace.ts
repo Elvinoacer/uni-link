@@ -39,7 +39,7 @@ router.get('/lookup', async (req: Request, res: Response) => {
 });
 
 // GET /marketplace/categories - Get available categories
-router.get('/categories', (req: Request, res: Response) => {
+router.get('/categories', (_req: Request, res: Response) => {
     // In a real app, these might come from a DB table 'Category'
     const categories = [
         { id: '1', name: 'Textbooks', icon: 'menu-book' },

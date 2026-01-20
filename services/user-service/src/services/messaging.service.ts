@@ -1,6 +1,6 @@
 import { prisma } from '../lib/prisma';
 import { socketService } from '../lib/socket';
-import { logger } from '../utils/logger';
+// import { logger } from '../utils/logger';
 
 export class MessagingService {
   async getConversations(userId: string, page = 1, limit = 20) {

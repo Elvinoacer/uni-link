@@ -16,6 +16,7 @@ const getUserId = (req: Request): string | null => {
   if (authHeader?.startsWith('Bearer ')) {
     try {
       const token = authHeader.split(' ')[1];
+      if (!token) return null;
       const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret') as any;
       return decoded.id || decoded.userId;
     } catch {
@@ -379,6 +380,7 @@ router.post('/stream', requireAuth, async (req: Request, res: Response) => {
 
     res.write('data: [DONE]\n\n');
     res.end();
+    return;
   } catch (error: any) {
     logger.error('RAG stream error:', error);
     
@@ -391,6 +393,7 @@ router.post('/stream', requireAuth, async (req: Request, res: Response) => {
     
     res.write(`data: ${JSON.stringify({ type: 'error', data: error.message })}\n\n`);
     res.end();
+    return;
   }
 });
 
@@ -399,7 +402,7 @@ router.post('/stream', requireAuth, async (req: Request, res: Response) => {
  */
 router.post('/process/:resourceId', requireAuth, async (req: Request, res: Response) => {
   try {
-    const { resourceId } = req.params;
+    const { resourceId } = req.params as { resourceId: string };
     const userId = (req as any).userId;
 
     // Get resource to verify ownership
@@ -446,7 +449,7 @@ router.post('/process/:resourceId', requireAuth, async (req: Request, res: Respo
  */
 router.delete('/:resourceId', requireAuth, async (req: Request, res: Response) => {
   try {
-    const { resourceId } = req.params;
+    const { resourceId } = req.params as { resourceId: string };
     const userId = (req as any).userId;
 
     // Get resource to verify ownership
