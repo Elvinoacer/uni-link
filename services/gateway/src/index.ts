@@ -335,7 +335,7 @@ app.use('/socket.io', createProxyMiddleware({
   target: USER_SERVICE_URL,
   changeOrigin: true,
   ws: true,
-  onError: (err, _req, res) => {
+  onError: (err, _req, _res) => {
     console.error('Socket Proxy error:', err.message);
     // WebSockets don't use standard response methods on error during upgrade
     // but http-proxy-middleware handles cleanup
