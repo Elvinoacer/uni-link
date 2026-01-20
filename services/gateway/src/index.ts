@@ -57,7 +57,18 @@ app.get('/health', (_req, res) => {
 // Service Routes (Proxy)
 // ===========================================
 
-const USER_SERVICE_URL = process.env.USER_SERVICE_URL || `http://localhost:${process.env.USER_SERVICE_PORT || 3001}`;
+const getUserServiceUrl = () => {
+  if (process.env.USER_SERVICE_ADDR) {
+    return `http://${process.env.USER_SERVICE_ADDR}`;
+  }
+  if (process.env.USER_SERVICE_URL) {
+    return process.env.USER_SERVICE_URL;
+  }
+  return `http://localhost:${process.env.USER_SERVICE_PORT || 3001}`;
+};
+
+const USER_SERVICE_URL = getUserServiceUrl();
+console.log(`[Gateway] Proxying to User Service at: ${USER_SERVICE_URL}`);
 
 // Authentication service proxy
 app.use('/api/auth', createProxyMiddleware({

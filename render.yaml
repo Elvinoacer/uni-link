@@ -12,6 +12,11 @@ services:
         value: production
       - key: PORT
         value: 10000
+      - key: USER_SERVICE_ADDR
+        fromService:
+          type: web
+          name: unisocial-user-service
+          property: hostport
     # Add other env vars in the Render Dashboard Config
     
   # User Service
