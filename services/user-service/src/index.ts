@@ -28,20 +28,30 @@ app.use(cors());
 app.use(express.json());
 
 // Health check
-app.get('/health', async (_req, res) => {
+// Health check (Simple - for Load Balancer)
+app.get('/health', (_req, res) => {
+  res.json({
+    status: 'healthy',
+    service: 'user-service',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Deep Health check (Database)
+app.get('/health/db', async (_req, res) => {
   try {
     await prisma.$queryRaw`SELECT 1`;
     res.json({
-      status: 'healthy',
-      service: 'user-service',
-      database: 'connected',
+      status: 'connected',
+      database: 'up',
       timestamp: new Date().toISOString()
     });
   } catch (error) {
+    logger.error('Database health check failed:', error);
     res.status(503).json({
       status: 'unhealthy',
-      service: 'user-service',
-      database: 'disconnected',
+      database: 'down',
+      error: error instanceof Error ? error.message : 'Unknown error',
       timestamp: new Date().toISOString()
     });
   }
