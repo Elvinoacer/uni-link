@@ -1,0 +1,65 @@
+{
+  "expo": {
+    "name": "Kampus",
+    "slug": "kampus",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/kampus-icon.png",
+    "scheme": "mobile",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.kampus"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/kampus-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "usesCleartextTraffic": true,
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.anonymous.kampus"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/images/kampus-splash.png",
+          "imageWidth": 200,
+          "dark": {
+            "image": "./assets/images/kampus-splash-dark.png",
+            "backgroundColor": "#1a1a1a"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/553f6045-7d36-40c1-aced-d2e65a77c2c2",
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    },
+    "extra": {
+      "eas": {
+        "projectId": "553f6045-7d36-40c1-aced-d2e65a77c2c2"
+      }
+    }
+  }
+}

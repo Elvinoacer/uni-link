@@ -1,0 +1,34 @@
+{
+  "cli": {
+    "version": ">= 7.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "http://10.187.213.136:3000/api"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "channel": "preview",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://uni-social-gateway.onrender.com/api" 
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "channel": "production",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://uni-social-gateway.onrender.com/api"
+      }
+    }
+  },
+  "update": {
+    "channel": "production"
+  },
+  "submit": {
+    "production": {}
+  }
+}

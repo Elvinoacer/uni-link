@@ -151,6 +151,7 @@ export class NotificationService {
   async getNotifications(userId: string, page = 1, limit = 20) {
     const skip = (page - 1) * limit;
     
+    // 1. Fetch notifications
     const notifications = await prisma.notification.findMany({
       where: { userId },
       skip,
@@ -158,28 +159,37 @@ export class NotificationService {
       orderBy: { createdAt: 'desc' },
     });
 
-    // Enrich with actor details
-    const enrichedNotifications = await Promise.all(notifications.map(async (notif) => {
-        let actor = null;
-        if (notif.metadata) {
-            try {
-                const meta = JSON.parse(notif.metadata);
-                // Prefer the most recent actor (first in list)
-                const actorId = meta.actorIds && meta.actorIds.length > 0 ? meta.actorIds[0] : null;
-                
-                if (actorId) {
-                    const user = await prisma.user.findUnique({
-                        where: { id: actorId },
-                        select: { id: true, username: true, displayName: true, avatarUrl: true }
-                    });
-                    actor = user;
-                }
-            } catch (e) {
-                // Ignore parsing errors
-            }
-        }
-        return { ...notif, actor };
-    }));
+    // 2. Extract all unique actorIds from metadata
+    const actorIds = new Set<string>();
+    const notificationsWithMeta = notifications.map(n => {
+        let meta: any = {};
+        try {
+            if (n.metadata) meta = JSON.parse(n.metadata);
+        } catch (e) {}
+        
+        // Get the most recent actorId
+        const actorId = meta.actorIds && meta.actorIds.length > 0 ? meta.actorIds[0] : null;
+        if (actorId) actorIds.add(actorId);
+
+        return { ...n, _parsedActorId: actorId };
+    });
+
+    // 3. Batch fetch all actors in one query
+    let actorsMap = new Map<string, any>();
+    if (actorIds.size > 0) {
+        const actors = await prisma.user.findMany({
+            where: { id: { in: Array.from(actorIds) } },
+            select: { id: true, username: true, displayName: true, avatarUrl: true }
+        });
+        actors.forEach(actor => actorsMap.set(actor.id, actor));
+    }
+
+    // 4. Attach actor data to notifications
+    const enrichedNotifications = notificationsWithMeta.map(n => {
+        const actor = n._parsedActorId ? actorsMap.get(n._parsedActorId) : null;
+        const { _parsedActorId, ...original } = n; // clean up internal property
+        return { ...original, actor };
+    });
 
     const unreadCount = await prisma.notification.count({
       where: { userId, isRead: false },
