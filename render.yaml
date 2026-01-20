@@ -13,10 +13,7 @@ services:
       - key: PORT
         value: 10000
       - key: USER_SERVICE_URL
-        fromService:
-          type: web
-          name: unisocial-user-service
-          property: url
+        value: https://unisocial-user-service.onrender.com
     # Add other env vars in the Render Dashboard Config
     
   # User Service
