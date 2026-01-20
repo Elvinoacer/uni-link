@@ -5,160 +5,118 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
-import { Card } from '../../components/ui/Card';
+import Animated, { FadeInDown, FadeInUp, Layout } from 'react-native-reanimated';
+import { useColorScheme } from 'nativewind';
 
 export default function ChooseIdentityScreen() {
   const router = useRouter();
   const [selectedIdentity, setSelectedIdentity] = useState<'real' | 'pseudo'>('real');
   const [realName, setRealName] = useState('');
   const [pseudonym, setPseudonym] = useState('');
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
 
   return (
-    <SafeAreaView className="flex-1 bg-background-light dark:bg-background-dark">
+    <SafeAreaView className="flex-1 bg-white dark:bg-[#0f172a]">
       <KeyboardAvoidingView 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         className="flex-1"
       >
         {/* Header */}
-        <View className="flex-row items-center justify-between px-4 pt-4 pb-2">
+        <Animated.View 
+          entering={FadeInDown.delay(100).springify()}
+          className="flex-row items-center justify-between px-6 pt-2 pb-6"
+        >
           <TouchableOpacity 
             onPress={() => router.back()}
-            className="w-10 h-10 items-center justify-center rounded-full bg-card-light dark:bg-card-dark"
+            className="w-10 h-10 items-center justify-center rounded-full bg-slate-50 dark:bg-slate-800"
           >
-            <MaterialIcons name="arrow-back-ios" size={20} color="#0e151b" />
+            <MaterialIcons name="chevron-left" size={24} color={isDark ? 'white' : 'black'} />
           </TouchableOpacity>
-          <Text className="text-xs font-bold uppercase tracking-widest opacity-60 text-text-light dark:text-text-dark">
-            Step 2 of 3
-          </Text>
-          <View className="w-10" />
-        </View>
+          
+          <View className="flex-row gap-2">
+            <View className="h-1.5 w-8 rounded-full bg-primary" />
+            <View className="h-1.5 w-8 rounded-full bg-primary" />
+            <View className="h-1.5 w-8 rounded-full bg-slate-200 dark:bg-slate-800" />
+          </View>
 
-        {/* Progress Bar */}
-        <View className="flex-row justify-center gap-2 py-4">
-          <View className="h-1 w-6 rounded-full bg-gray-300 dark:bg-gray-700" />
-          <View className="h-1 w-12 rounded-full bg-primary" />
-          <View className="h-1 w-6 rounded-full bg-gray-300 dark:bg-gray-700" />
-        </View>
+          <View className="w-10" />
+        </Animated.View>
 
         <ScrollView className="flex-1 px-6">
-          <View className="mt-4 mb-2">
-            <Text className="text-3xl font-bold text-center text-text-light dark:text-text-dark">
-              Your Campus Identity
+          <Animated.View entering={FadeInDown.delay(200).springify()} className="mt-2 mb-8">
+            <Text className="text-4xl font-black text-slate-900 dark:text-white mb-3 tracking-tight">
+              Choose Identity
             </Text>
-            <Text className="text-center text-gray-500 mt-2 px-8 leading-relaxed">
+            <Text className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed">
               Switch between your professional self and a private alias anytime.
             </Text>
-          </View>
+          </Animated.View>
 
-          <View className="mt-8 space-y-6 gap-6">
+          <Animated.View entering={FadeInUp.delay(400).springify()} className="space-y-6">
             {/* Real Name Card */}
-            <TouchableOpacity 
-              activeOpacity={0.9}
-              onPress={() => setSelectedIdentity('real')}
-              className={`p-5 rounded-xl border-2 transition-all ${
+            <View 
+              className={`rounded-3xl border-2 overflow-hidden ${
                 selectedIdentity === 'real' 
-                  ? 'bg-white dark:bg-card-dark border-primary shadow-lg shadow-primary/10' 
-                  : 'bg-card-light dark:bg-card-dark border-transparent opacity-80'
+                  ? 'bg-primary/5 border-primary shadow-xl shadow-primary/10' 
+                  : 'bg-slate-50 dark:bg-slate-900/40 border-transparent'
               }`}
             >
-              <View className="flex-row gap-4">
-                <View className="w-12 h-12 items-center justify-center rounded-lg bg-primary/10">
-                  <MaterialIcons name="badge" size={28} color="#1990e6" />
-                </View>
-                <View className="flex-1">
-                  <View className="flex-row justify-between items-center mb-1">
-                    <Text className="text-[10px] font-bold uppercase tracking-widest text-primary">
-                      Verified Identity
-                    </Text>
-                    {selectedIdentity === 'real' && (
-                      <MaterialIcons name="check-circle" size={18} color="#1990e6" />
-                    )}
+              <TouchableOpacity
+                activeOpacity={0.95}
+                onPress={() => setSelectedIdentity('real')}
+                className="p-6 pb-2"
+              >
+                <View className="flex-row gap-5 items-start">
+                  <View className={`w-14 h-14 items-center justify-center rounded-2xl ${selectedIdentity === 'real' ? 'bg-primary' : 'bg-white dark:bg-slate-800'}`}>
+                    <MaterialIcons name="badge" size={28} color={selectedIdentity === 'real' ? 'white' : '#1990e6'} />
                   </View>
-                  <Text className="text-lg font-bold text-text-light dark:text-text-dark">
-                    Real Name
-                  </Text>
-                  <Text className="text-sm text-gray-500 mt-1">
-                    Used for Marketplace, Study Groups, and Networking.
-                  </Text>
-                  
-                  {selectedIdentity === 'real' && (
-                    <View className="mt-4">
-                      <Input
-                        label="FULL NAME"
-                        value={realName}
-                        onChangeText={setRealName}
-                        placeholder="e.g., Alex Johnson"
-                        className="bg-gray-50 dark:bg-black/20"
-                      />
+                  <View className="flex-1 pt-1">
+                    <View className="flex-row justify-between items-center mb-1">
+                      <Text className="text-xs font-bold uppercase tracking-widest text-primary">
+                        Professional
+                      </Text>
+                      {selectedIdentity === 'real' && (
+                        <Animated.View entering={FadeInUp}>
+                          <MaterialIcons name="check-circle" size={20} color="#1990e6" />
+                        </Animated.View>
+                      )}
                     </View>
-                  )}
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            {/* Pseudonym Card */}
-            <TouchableOpacity 
-              activeOpacity={0.9}
-              onPress={() => setSelectedIdentity('pseudo')}
-              className={`p-5 rounded-xl border-2 transition-all ${
-                selectedIdentity === 'pseudo' 
-                  ? 'bg-white dark:bg-card-dark border-accent shadow-lg shadow-accent/10' 
-                  : 'bg-card-light dark:bg-card-dark border-transparent opacity-80'
-              }`}
-            >
-              <View className="flex-row gap-4">
-                <View className="w-12 h-12 items-center justify-center rounded-lg bg-accent/10">
-                  <MaterialIcons name="masks" size={28} color="#FFD700" />
-                </View>
-                <View className="flex-1">
-                  <View className="flex-row justify-between items-center mb-1">
-                    <Text className="text-[10px] font-bold uppercase tracking-widest text-accent">
-                      Privacy Mode
+                    <Text className="text-xl font-bold text-slate-900 dark:text-white mb-1">
+                      Real Name
                     </Text>
-                    {selectedIdentity === 'pseudo' && (
-                      <MaterialIcons name="check-circle" size={18} color="#FFD700" />
-                    )}
+                    <Text className="text-sm text-slate-500 font-medium leading-relaxed">
+                      Build your network. Best for marketplace, events, and study groups.
+                    </Text>
                   </View>
-                  <Text className="text-lg font-bold text-text-light dark:text-text-dark">
-                    Pseudonym
-                  </Text>
-                  <Text className="text-sm text-gray-500 mt-1">
-                    Used for Confessions, Tips, and Anonymous Voting.
-                  </Text>
-                  
-                  {selectedIdentity === 'pseudo' && (
-                    <View className="mt-4">
-                      <Input
-                        label="ALIAS"
-                        value={pseudonym}
-                        onChangeText={setPseudonym}
-                        placeholder="e.g., BlueCoyote_22"
-                        className="bg-gray-50 dark:bg-black/20"
-                      />
-                    </View>
-                  )}
                 </View>
-              </View>
-            </TouchableOpacity>
-          </View>
+              </TouchableOpacity>
 
-          <View className="flex-row items-center justify-center gap-2 mt-8 mb-4">
-            <MaterialIcons name="security" size={16} color="#FFD700" />
-            <Text className="text-xs text-center text-gray-500">
-              You can toggle your active identity anytime.
-            </Text>
-          </View>
+              {selectedIdentity === 'real' && (
+                <Animated.View entering={FadeInUp} className="px-6 pb-6 w-full">
+                  <Input
+                    label="FULL NAME"
+                    value={realName}
+                    onChangeText={setRealName}
+                    placeholder="e.g., Alex Johnson"
+                    className="bg-white dark:bg-slate-900 border border-primary/20"
+                  />
+                </Animated.View>
+              )}
+            </View>
+          </Animated.View>
+
+          <View className="h-32" /> 
         </ScrollView>
 
-        <View className="p-6 bg-background-light dark:bg-background-dark border-t border-gray-100 dark:border-gray-800">
+        <View className="p-6 bg-white/90 dark:bg-[#0f172a]/95 absolute bottom-0 left-0 right-0 border-t border-slate-100 dark:border-slate-800 backdrop-blur-md">
           <Button
-            title="Continue to Campus"
+            title="Continue"
+            rightIcon={<MaterialIcons name="arrow-forward" size={20} color="white" />}
             onPress={() => router.push('/(onboarding)/interests')}
             size="lg"
+            className="shadow-xl shadow-primary/25"
           />
-          <Text className="text-center mt-4 text-xs text-gray-400">
-            By continuing, you agree to the Campus Trust & Safety Policy.
-          </Text>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>

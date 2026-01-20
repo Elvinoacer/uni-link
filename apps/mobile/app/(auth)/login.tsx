@@ -6,12 +6,17 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useAuthStore } from '../../store/authStore';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import { useColorScheme } from 'nativewind';
 
 export default function LoginScreen() {
   const router = useRouter();
   const { login, isLoading, error, clearError } = useAuthStore();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
 
   const handleLogin = async () => {
     try {
@@ -24,76 +29,103 @@ export default function LoginScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-background-light dark:bg-background-dark">
+    <SafeAreaView className="flex-1 bg-white dark:bg-[#0f172a]">
       <KeyboardAvoidingView 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         className="flex-1"
       >
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-          <View className="flex-1 px-6 justify-center">
-            
+        <ScrollView 
+          contentContainerStyle={{ flexGrow: 1 }} 
+          keyboardShouldPersistTaps="handled"
+          className="px-6"
+        >
+          {/* Back Button */}
+          <Animated.View 
+            entering={FadeInDown.delay(100).springify()} 
+            className="pt-4 items-start"
+          >
+            <TouchableOpacity 
+              onPress={() => router.back()} 
+              className="p-3 -ml-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
+            >
+              <MaterialIcons 
+                name="arrow-back" 
+                size={28} 
+                color={isDark ? '#ffffff' : '#0f172a'} 
+              />
+            </TouchableOpacity>
+          </Animated.View>
+
+          <View className="flex-1 justify-center pb-24">
             {/* Header */}
-            <View className="mb-10">
-              <TouchableOpacity onPress={() => router.back()} className="mb-6">
-                <MaterialIcons name="arrow-back" size={24} color="#6B7280" />
-              </TouchableOpacity>
-              <Text className="text-3xl font-bold text-text-light dark:text-text-dark mb-2">
-                Welcome back!
+            <Animated.View entering={FadeInDown.delay(200).springify()} className="mb-14">
+              <Text className="text-4xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">
+                Welcome back
               </Text>
-              <Text className="text-gray-500 text-base">
-                Sign in to continue your campus journey.
+              <Text className="text-slate-500 dark:text-slate-400 text-lg font-medium leading-relaxed">
+                Enter your details to access your personal workspace.
               </Text>
-            </View>
+            </Animated.View>
 
             {/* Form */}
-            <View className="space-y-4 gap-4">
+            <Animated.View entering={FadeInUp.delay(300).springify()}>
               <Input
-                 label="EMAIL"
+                 label="EMAIL ADDRESS"
                  placeholder="name@university.edu"
                  value={email}
                  onChangeText={(t) => { setEmail(t); clearError(); }}
                  autoCapitalize="none"
                  keyboardType="email-address"
+                 leftIcon="mail-outline"
+                 className="bg-slate-50 dark:bg-slate-900/50 mb-8"
               />
               
-              <View>
+              <View className="mb-2">
                 <Input
                   label="PASSWORD"
-                  placeholder="••••••••"
+                  placeholder="Enter your password"
                   value={password}
                   onChangeText={(t) => { setPassword(t); clearError(); }}
-                  secureTextEntry
+                  secureTextEntry={!showPassword}
+                  leftIcon="lock-outline"
+                  rightIcon={showPassword ? 'visibility-off' : 'visibility'}
+                  onRightIconPress={() => setShowPassword(!showPassword)}
+                  className="bg-slate-50 dark:bg-slate-900/50"
                 />
-                <TouchableOpacity className="self-end mt-2">
-                  <Text className="text-primary text-sm font-semibold">Forgot Password?</Text>
+                <TouchableOpacity className="self-end mt-4">
+                  <Text className="text-primary font-bold text-sm">Forgot Password?</Text>
                 </TouchableOpacity>
               </View>
 
               {error && (
-                <View className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-800">
-                  <Text className="text-red-600 dark:text-red-400 text-sm text-center font-medium">
+                <Animated.View 
+                  entering={FadeInUp}
+                  className="bg-red-50 dark:bg-red-900/10 p-4 rounded-xl border border-red-100 dark:border-red-900/50 flex-row items-center"
+                >
+                  <MaterialIcons name="error-outline" size={20} className="text-red-500 mr-2" />
+                  <Text className="text-red-600 dark:text-red-400 text-sm font-medium flex-1">
                     {error}
                   </Text>
-                </View>
+                </Animated.View>
               )}
 
               <Button
-                title="Log In"
+                title="Sign In"
                 onPress={handleLogin}
                 isLoading={isLoading}
                 size="lg"
-                className="mt-4"
+                className="mt-6 shadow-xl shadow-primary/20"
+                rightIcon={<MaterialIcons name="arrow-forward" size={20} color="white" />}
               />
-            </View>
+            </Animated.View>
 
             {/* Footer */}
-            <View className="mt-10 flex-row justify-center">
-              <Text className="text-gray-500">Don't have an account? </Text>
+            <Animated.View entering={FadeInUp.delay(500).springify()} className="mt-16 flex-row justify-center items-center space-x-1">
+              <Text className="text-slate-500 dark:text-slate-400 font-medium">New to Kampus? </Text>
               <TouchableOpacity onPress={() => router.push('/(auth)/sign-up')}>
-                <Text className="text-primary font-bold">Sign Up</Text>
+                <Text className="text-primary font-bold text-base">Create account</Text>
               </TouchableOpacity>
-            </View>
-
+            </Animated.View>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

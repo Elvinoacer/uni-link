@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Kampus",
-    "slug": "kampus",
+    "slug": "uni-link",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/kampus-icon.png",

@@ -33,7 +33,7 @@ export function Input({
   keyboardType = 'default',
 }: InputProps) {
   return (
-    <View className={clsx('space-y-2', className)}>
+    <View className={clsx('space-y-3', className)}>
       {label && (
         <Text className="text-sm font-semibold text-text-light dark:text-text-dark opacity-80 ml-1">
           {label}

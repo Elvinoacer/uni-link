@@ -15,10 +15,6 @@ module.exports = function (api) {
       ],
     ],
     plugins: [
-      'react-native-reanimated/plugin',
-      // Inline plugin to force replace process.env.EXPO_ROUTER_APP_ROOT used by expo-router
-      // This is necessary because NativeWind's transformer chain can sometimes cause 
-      // expo-router-plugin to miss the replacement.
       function({ types: t }) {
         return {
           visitor: {
@@ -47,6 +43,7 @@ module.exports = function (api) {
           },
         },
       ],
+      'react-native-reanimated/plugin',
     ],
   };
 };
