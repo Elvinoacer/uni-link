@@ -14,14 +14,14 @@
       "distribution": "internal",
       "channel": "preview",
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://uni-social-gateway.onrender.com/api" 
+        "EXPO_PUBLIC_API_URL": "https://unisocial-gateway.onrender.com/api" 
       }
     },
     "production": {
       "distribution": "store",
       "channel": "production",
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://uni-social-gateway.onrender.com/api"
+        "EXPO_PUBLIC_API_URL": "https://unisocial-gateway.onrender.com/api"
       }
     }
   },
