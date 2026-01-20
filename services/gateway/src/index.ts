@@ -10,7 +10,7 @@ import { authMiddleware, optionalAuthMiddleware } from './middleware/auth';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.GATEWAY_PORT || 3000;
+const PORT = process.env.PORT || process.env.GATEWAY_PORT || 3000;
 
 // ===========================================
 // Middleware
@@ -57,7 +57,7 @@ app.get('/health', (_req, res) => {
 // Service Routes (Proxy)
 // ===========================================
 
-const USER_SERVICE_URL = `http://localhost:${process.env.USER_SERVICE_PORT || 3001}`;
+const USER_SERVICE_URL = process.env.USER_SERVICE_URL || `http://localhost:${process.env.USER_SERVICE_PORT || 3001}`;
 
 // Authentication service proxy
 app.use('/api/auth', createProxyMiddleware({
