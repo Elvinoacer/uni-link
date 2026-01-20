@@ -58,15 +58,8 @@ app.get('/health', (_req, res) => {
 // ===========================================
 
 const getUserServiceUrl = () => {
-  if (process.env.USER_SERVICE_ADDR) {
-    return `http://${process.env.USER_SERVICE_ADDR}`;
-  }
   if (process.env.USER_SERVICE_URL) {
     return process.env.USER_SERVICE_URL;
-  }
-  // Fallback for Render Internal DNS (Service Name)
-  if (process.env.NODE_ENV === 'production') {
-    return `http://unisocial-user-service:10000`;
   }
   return `http://localhost:${process.env.USER_SERVICE_PORT || 3001}`;
 };
