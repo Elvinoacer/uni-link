@@ -4,7 +4,7 @@ services:
     name: unisocial-gateway
     env: node
     rootDir: services/gateway
-    buildCommand: cd ../../packages/shared-types && npm install && npm run build && cd ../../services/gateway && npm install && npm run build
+    buildCommand: cd ../../packages/shared-types && npm install --include=dev && npm run build && cd ../../services/gateway && npm install --include=dev && npm run build
     startCommand: npm run start
     plan: free
     envVars:
@@ -19,7 +19,7 @@ services:
     name: unisocial-user-service
     env: node
     rootDir: services/user-service
-    buildCommand: cd ../../packages/shared-types && npm install && npm run build && cd ../../services/user-service && npm install && npm run build
+    buildCommand: cd ../../packages/shared-types && npm install --include=dev && npm run build && cd ../../services/user-service && npm install --include=dev && npm run build
     startCommand: npm run start
     plan: free
     envVars:
