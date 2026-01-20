@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lost &amp; Found Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#087d7d",
+                        "accent-yellow": "#FAD254",
+                        "background-light": "#faf6f0",
+                        "background-dark": "#1d293a",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Spline Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#111818] dark:text-white min-h-screen">
+<div class="relative flex h-full w-full max-w-[480px] mx-auto flex-col bg-background-light dark:bg-background-dark overflow-x-hidden pb-24">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-4">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center justify-center size-10 rounded-full bg-white dark:bg-slate-800 shadow-sm">
+<span class="material-symbols-outlined text-[#111818] dark:text-white">arrow_back</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">Lost &amp; Found</h1>
+<div class="flex items-center justify-center size-10 rounded-full bg-white dark:bg-slate-800 shadow-sm">
+<span class="material-symbols-outlined text-[#111818] dark:text-white">tune</span>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="mt-4 flex items-center bg-white dark:bg-slate-800 rounded-xl px-4 py-3 shadow-sm border border-black/5">
+<span class="material-symbols-outlined text-[#608a8a] mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full p-0 placeholder-[#608a8a]" placeholder="Search for keys, wallets, etc..." type="text"/>
+</div>
+<!-- Segmented Control Toggle -->
+<div class="mt-4 flex bg-black/5 dark:bg-white/10 p-1 rounded-xl">
+<label class="flex-1 flex cursor-pointer h-10 items-center justify-center rounded-lg transition-all has-[:checked]:bg-primary has-[:checked]:text-white text-[#608a8a] text-sm font-semibold">
+<span>Lost</span>
+<input class="hidden" name="view-toggle" type="radio" value="lost"/>
+</label>
+<label class="flex-1 flex cursor-pointer h-10 items-center justify-center rounded-lg transition-all has-[:checked]:bg-primary has-[:checked]:text-white text-[#608a8a] text-sm font-semibold">
+<span>Found</span>
+<input checked="" class="hidden" name="view-toggle" type="radio" value="found"/>
+</label>
+</div>
+</header>
+<!-- Content Grid -->
+<main class="p-4">
+<div class="grid grid-cols-2 gap-4">
+<!-- Found Item Card 1 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col">
+<div class="aspect-square bg-cover bg-center relative" data-alt="Blue iPhone 13 found on campus" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCb1iMX-bqcQNOpt5X6jLU3k7iuGV3SQZ1HSzW89DD8rzQ-RqWReDWOGssAXs8qqZXG8DhGtcgqaQso2GmfaPoOAue-ivgFm9jjMPphlP-thiTsfYoSg4K182MWkJcszo0MSSV-klVjIuVxZrV3A-kXa7Jw5PtuKPL4Lv_hMQ7xG2knOSpTgJC0sSwjtsGMOK6-PiSL_dDphO3YIFBy0V_2DvigpfazMC00d-0ol24WuL_cvAV6JQSpT6J1DfNrp6f76th-hg0dB1U");'>
+<div class="absolute top-2 left-2 bg-accent-yellow text-black text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                            New
+                        </div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="font-bold text-sm leading-tight line-clamp-1">iPhone 13 - Blue</h3>
+<div class="flex items-center gap-1 mt-1 text-[#608a8a] text-[11px]">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="truncate">Student Union</span>
+</div>
+<div class="mt-auto pt-3 flex items-center justify-between">
+<span class="text-[10px] text-[#608a8a]">2h ago</span>
+<button class="bg-primary text-white text-[11px] font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-transform">Claim</button>
+</div>
+</div>
+</div>
+<!-- Found Item Card 2 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col">
+<div class="aspect-square bg-cover bg-center relative" data-alt="Silver keys with a red keychain" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDjS-5lf4R6IVaEDPuzJiy8JRWMJemReAOardiPgTohoLfyxpKt2hEipm4N8KjWWDvmMI_Z38N7cKpd-8YA_getYrJs4LlR43Ja1eiXupJauva4lZXifsc8MhEKnPCJ3fRel6nh2Q1fhSTTLskkNOT7WqcSf7RciYYAAWi1CuUZWiG-KiFBgQ_lfNfLL7kiKOKpJ5Ka_7vwPE11nsAIL3Pedb73plS64pY6bwF055AKJvxQn8DUBxBt6rA70wKmQ9_1fPKqz-15_Dk");'>
+<div class="absolute top-2 right-2 bg-white/90 dark:bg-black/40 backdrop-blur size-6 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined text-[16px] text-primary">bookmark</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="font-bold text-sm leading-tight line-clamp-1">House Keys</h3>
+<div class="flex items-center gap-1 mt-1 text-[#608a8a] text-[11px]">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="truncate">Main Library</span>
+</div>
+<div class="mt-auto pt-3 flex items-center justify-between">
+<span class="text-[10px] text-[#608a8a]">5h ago</span>
+<button class="bg-primary text-white text-[11px] font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-transform">Claim</button>
+</div>
+</div>
+</div>
+<!-- Found Item Card 3 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col">
+<div class="aspect-square bg-cover bg-center" data-alt="White hydroflask water bottle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBXDl2ZBKJq2uuoRPzPFVGInbcPiLK4CJLAOSaBzS3Iqwz2OsaOrVmO1taGF0wOCoPo8JqFTEUonuHRpFGdces2G1S0wrwiql_5kP6bV3Sy54b8780HII8XjtK8fhFc7igY0aOCORKZs2nDhOZIB3U-hlK1isZUehzIOqcvEOM5BM23BKY6dRHZQIJHCkfFekqFhjdTuzkWSyRcDkQueIjOUZrhncF4iy7QeZl4KyQnsG_drzxdbsD1oeHJFevijqf35jz0l-rkrWU");'></div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="font-bold text-sm leading-tight line-clamp-1">HydroFlask 32oz</h3>
+<div class="flex items-center gap-1 mt-1 text-[#608a8a] text-[11px]">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="truncate">Gym Complex</span>
+</div>
+<div class="mt-auto pt-3 flex items-center justify-between">
+<span class="text-[10px] text-[#608a8a]">Yesterday</span>
+<button class="bg-primary text-white text-[11px] font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-transform">Claim</button>
+</div>
+</div>
+</div>
+<!-- Found Item Card 4 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col">
+<div class="aspect-square bg-cover bg-center" data-alt="Black laptop charger" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKB_Kq71s9mZ2MGPc4VOtlUMzV3H-NyFYIVx48f8ilo06BSh1Pfl1eqjDBwYPHWgJ_eotphaUn6kTYNE4IcFr6Y9nPVDXLxImUhb8VZmkOyQZ-Uq_D_-ejdU3KfPgw9Wd1-HPMsAmD21x1u37cCxr7Dr9qAa1ORfacjQWg2BUuzGwEh-gqX2PD5uxsnbRfr2PPBTBnPIS6921k71bz1yTICHwV2SJ-gR1hPOmQv2urUwuIHk38ydim6uwOczvmQDp9LZvHLj-cDiw");'></div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="font-bold text-sm leading-tight line-clamp-1">MacBook Charger</h3>
+<div class="flex items-center gap-1 mt-1 text-[#608a8a] text-[11px]">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="truncate">Engineering Lab</span>
+</div>
+<div class="mt-auto pt-3 flex items-center justify-between">
+<span class="text-[10px] text-[#608a8a]">2 days ago</span>
+<button class="bg-primary text-white text-[11px] font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-transform">Claim</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 size-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform z-30">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Verification Modal Simulation (Fixed at bottom for visibility) -->
+<div class="fixed inset-x-0 bottom-0 z-50 transform translate-y-0 transition-transform duration-300">
+<div class="bg-white dark:bg-slate-900 rounded-t-3xl shadow-[0_-8px_30px_rgb(0,0,0,0.12)] p-6 border-t border-black/5">
+<div class="w-12 h-1.5 bg-gray-300 dark:bg-gray-700 rounded-full mx-auto mb-6"></div>
+<div class="flex items-center gap-3 mb-4">
+<div class="size-10 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeJR9ffqk_TmSYI44MO40lV-VsJ_XQY6lwd-hkLLtv5BcrV9drcGN7oLbWNhkn1TWm-ZL_1npiyXO_rgBo4QDh2GqGnZnGXw5nx7eQm4OalucC5HYWVy5RCPd7AY6qQHnrAj662PxqW86leieG9CGty3k78nx-jJU2Y07iqM8WccA59PmY6VaKtBBKT8ooa6oGlckyORABzLS2-BSE0jIyt6_BDM4c5JCMSJnc0icXjzvfedha5J4dhtIw5wOBESaaiLqojufWgXA"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Verify ownership</h4>
+<p class="text-xs text-[#608a8a]">Finder: Alex M.</p>
+</div>
+</div>
+<div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-xl mb-6">
+<p class="text-primary dark:text-teal-300 font-medium text-sm leading-relaxed">
+                        "What color is the protective case and what sticker is on the back side of the phone?"
+                    </p>
+</div>
+<div class="space-y-4">
+<textarea class="w-full bg-background-light dark:bg-slate-800 border-none rounded-xl focus:ring-primary text-sm p-4 placeholder-[#608a8a]" placeholder="Type your answer here..." rows="3"></textarea>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-md active:opacity-90">
+                        Submit Answer
+                    </button>
+</div>
+<div class="h-6"></div>
+</div>
+</div>
+<!-- Navigation Bar (iOS Style) -->
+<nav class="fixed bottom-0 inset-x-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-black/5 px-8 py-3 flex justify-between items-center z-40">
+<div class="flex flex-col items-center gap-1 text-[#608a8a]">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-bold">Lost &amp; Found</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#608a8a]">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[10px] font-medium">Messages</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#608a8a]">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</div>
+</nav>
+</div>
+</body></html>

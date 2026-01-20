@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Select University</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1990e6",
+                        "accent-yellow": "#FFD700",
+                        "background-light": "#ffffff",
+                        "background-dark": "#171f26",
+                        "card-light": "#F5F7FA",
+                        "card-dark": "#232d36",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0e151b] dark:text-white transition-colors duration-300">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-[430px] mx-auto border-x border-gray-100 dark:border-gray-800 shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- Top Navigation -->
+<div class="flex items-center px-6 pt-12 pb-2 justify-between">
+<div class="flex-1">
+<button class="flex items-center justify-center size-10 rounded-full bg-card-light dark:bg-card-dark text-primary">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+</div>
+<h2 class="text-sm font-semibold tracking-wide uppercase opacity-60 text-center flex-1">Step 1 of 3</h2>
+<div class="flex-1 flex justify-end">
+<button class="text-sm font-medium text-accent-yellow">Skip for now</button>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-6 pb-32">
+<!-- Header Illustration Section -->
+<div class="mt-4 mb-8">
+<div class="w-full aspect-[4/3] rounded-xl overflow-hidden relative bg-primary/5 dark:bg-primary/10">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center p-8">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain" data-alt="Illustration of a vibrant modern university campus with students" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDjQjuZXt6Se-ZlUBZ9ceu9aEVs4aS2W_Fp2_q64F2S84Xd0eXstNh2tRho6ahAOwaQUSfqAL-cvgBFVZq28wQOdMRdOHCbTNfGHOtXzmyR-smrR6_SQpJKva-o5M9HqUt8VJN-irPgF9jdwi2nnDgzo9b0ujd3FBo9X5bnmOH_3npmpG2QjCo-4CoXtfcSCzNpLSqYl1RJcmE8FZHkCMXoJD1QFlgm39x0xWRrXFdXryOKAgZyoqRds9u6mxX6JTl6rNrJ_MG_CaU");'>
+</div>
+</div>
+</div>
+</div>
+<!-- Welcome Text -->
+<div class="text-center mb-8">
+<h1 class="text-3xl font-bold leading-tight mb-3">Find Your Campus</h1>
+<p class="text-base opacity-70 leading-relaxed px-4">Connect with your community, trade items, and discover events near you.</p>
+</div>
+<!-- Search & Filter Actions -->
+<div class="space-y-4">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 rounded-xl border-none bg-card-light dark:bg-card-dark focus:ring-2 focus:ring-primary/50 text-base font-medium placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-all" placeholder="Enter your university name..." type="text"/>
+<button class="absolute inset-y-0 right-3 flex items-center text-primary">
+<span class="material-symbols-outlined bg-white dark:bg-background-dark rounded-lg p-1 shadow-sm">map</span>
+</button>
+</div>
+<!-- Suggested List -->
+<div class="pt-2">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-sm font-bold opacity-60 uppercase tracking-wider">Nearby Universities</h3>
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+</div>
+<div class="space-y-3">
+<!-- University Card 1 -->
+<div class="flex items-center p-4 rounded-xl bg-card-light dark:bg-card-dark border-2 border-transparent hover:border-primary/30 cursor-pointer transition-all active:scale-[0.98]">
+<div class="size-12 rounded-lg bg-white dark:bg-background-dark flex items-center justify-center shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700">
+<div class="w-8 h-8 bg-cover" data-alt="University crest logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDHwg4KV9W-E5m7YIkjKgTzXW2pHCLT23gyIrhH292fV-cUVf3lHAv0987r_c67UEWHd0Eb2m5I5lZhx-MrjOQjt9qPu5s1i_spdwk5Xl0E5l378ai1M2VXi3fa78OPGT7dPYgxHw8PrX46zGf9pQsU3sveHyXtbYhrKmzXMyVl7jl-V0Wpmrt-sJBIjITUECrnY48ZYwzGIx9ygJUgaz4l48QnhFI2MjR85nlMNarQNTCdX9HGQMCGrThk12SL3XHDnS4HDJoWNBU");'></div>
+</div>
+<div class="ml-4 flex-1">
+<div class="font-bold text-base">Stanford University</div>
+<div class="text-xs opacity-50 font-medium">Stanford, CA • 2.4 miles</div>
+</div>
+<span class="material-symbols-outlined text-gray-300">chevron_right</span>
+</div>
+<!-- University Card 2 -->
+<div class="flex items-center p-4 rounded-xl bg-card-light dark:bg-card-dark border-2 border-transparent hover:border-primary/30 cursor-pointer transition-all active:scale-[0.98]">
+<div class="size-12 rounded-lg bg-white dark:bg-background-dark flex items-center justify-center shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700">
+<div class="w-8 h-8 bg-cover" data-alt="University crest logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9htXd-tl_wQ5s7ugXRCQeccwrB8ifHe5iZjWY4uTJQlsrk4otHnaIFX4Ftn0lRy3FFvekQd63S0sRc3jZTGF_5bbfKCmpOKzWVVDHHc_48ToC_FjenaMppJK0_fUeRhOoFH1hawasa0fPUkmlLirgoxAgGkhzSpcI9P-kwnnUo5MXC5YJU3PGTuVYdCInXGaKWOoaEy339uQv76cjbsQz-RIaCk-Bm7nIByJiFw8z1bwmmlZYa6TWqeCiwPAFf2YKGaE1u3rxerM");'></div>
+</div>
+<div class="ml-4 flex-1">
+<div class="font-bold text-base">UC Berkeley</div>
+<div class="text-xs opacity-50 font-medium">Berkeley, CA • 35 miles</div>
+</div>
+<span class="material-symbols-outlined text-gray-300">chevron_right</span>
+</div>
+<!-- Manual Entry Action -->
+<button class="w-full flex items-center justify-center p-4 rounded-xl border-2 border-dashed border-gray-200 dark:border-gray-700 text-gray-400 font-medium hover:border-primary/50 hover:text-primary transition-all">
+<span class="material-symbols-outlined mr-2">add_circle</span>
+                            Suggest your university
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom CTA Bar -->
+<div class="absolute bottom-0 left-0 right-0 p-6 pb-10 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light/95 dark:via-background-dark/95 to-transparent">
+<button class="w-full bg-primary text-white font-bold py-5 rounded-full shadow-xl shadow-primary/25 active:scale-95 transition-all text-lg flex items-center justify-center gap-2">
+                Get Started
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<div class="mt-4 flex justify-center">
+<div class="h-1 w-32 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+</div>
+</div>
+</div>
+</body></html>

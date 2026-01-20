@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Post Details &amp; Live Poll - University Social</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1392ec",
+                        "accent-gold": "#DBA62F",
+                        "background-light": "#fbfaf9",
+                        "background-dark": "#17191c",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .poll-transition {
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d161b] dark:text-slate-100 antialiased overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 ios-blur border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between px-4 h-16">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">Post Details</h1>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</nav>
+<main class="max-w-2xl mx-auto pb-32">
+<!-- Main Post Card -->
+<article class="p-4 bg-white dark:bg-[#1e2124] m-2 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<!-- Author Header -->
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-12 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="Student profile picture wearing a graduation cap" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBMHdqH19fmUh6A8IBWvm7Zgo1Sb0dmswC4Y-vdp0Zf3I4ZN4rAj8bST4cDdYGfowkibkeKNZd9IqwkXFad8hh2iWuTHHr3Y1qAAah5qLr72kvJXpUvVpxV45Y44u6XTdFtJTw0nkX1v7x6LtGCB0tphjTHIFDkN5guCAQ7qQNmd_sIFcv9_G059juMJC1e6-OeQHPl4wHbjt_4g4BuIvNXYx6YQ8BD-xWTSFj4lYCE7RYgYFCOt_aYN_6KXraG19tNOHJOnSwlKGk');"></div>
+<div class="absolute -bottom-1 -right-1 bg-accent-gold rounded-full p-0.5 border-2 border-white dark:border-[#1e2124]">
+<span class="material-symbols-outlined text-[10px] text-white font-bold">verified</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h4 class="font-bold text-base leading-tight">Alex Johnson</h4>
+<span class="text-[10px] px-1.5 py-0.5 bg-primary/10 text-primary rounded font-bold uppercase tracking-wider">Student</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">2h ago • Computer Science</p>
+</div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white text-sm font-bold rounded-full hover:bg-blue-600 transition-colors">
+                    Follow
+                </button>
+</div>
+<!-- Question -->
+<h2 class="text-xl font-bold leading-snug mb-6 px-1">
+                Which coffee shop on campus has the best study vibes? ☕️📖
+            </h2>
+<!-- Poll Options -->
+<div class="space-y-4 mb-6">
+<!-- Option 1 (Winner/Leader) -->
+<div class="group cursor-pointer">
+<div class="flex justify-between items-end mb-2 px-1">
+<span class="text-base font-semibold text-primary">The Library Cafe</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-sm font-bold">check_circle</span>
+<span class="text-sm font-bold text-primary">45%</span>
+</div>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary poll-transition rounded-full shadow-[0_0_12px_rgba(19,146,236,0.3)]" style="width: 45%;"></div>
+</div>
+<p class="text-[11px] mt-1.5 text-primary/70 font-medium px-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> Current leader
+                    </p>
+</div>
+<!-- Option 2 -->
+<div class="group cursor-pointer">
+<div class="flex justify-between items-end mb-2 px-1">
+<span class="text-base font-medium text-slate-700 dark:text-slate-300">Student Union Hub</span>
+<span class="text-sm font-semibold text-slate-500">30%</span>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-slate-300 dark:bg-slate-600 poll-transition rounded-full" style="width: 30%;"></div>
+</div>
+</div>
+<!-- Option 3 -->
+<div class="group cursor-pointer">
+<div class="flex justify-between items-end mb-2 px-1">
+<span class="text-base font-medium text-slate-700 dark:text-slate-300">The Quad Outdoor Kiosk</span>
+<span class="text-sm font-semibold text-slate-500">25%</span>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-slate-300 dark:bg-slate-600 poll-transition rounded-full" style="width: 25%;"></div>
+</div>
+</div>
+</div>
+<!-- Poll Meta -->
+<div class="flex items-center justify-between text-xs text-slate-400 dark:text-slate-500 px-1 pb-4 border-b border-slate-100 dark:border-slate-800">
+<span class="font-medium">1,240 votes • Poll ends in 5h</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">history</span> Live Results
+                </span>
+</div>
+<!-- Engagement Metrics -->
+<div class="flex items-center justify-around py-3">
+<button class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-red-500 transition-colors group">
+<span class="material-symbols-outlined group-active:scale-125 transition-transform">favorite</span>
+<span class="text-sm font-semibold">432</span>
+</button>
+<button class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined group-active:rotate-12 transition-transform">cycle</span>
+<span class="text-sm font-semibold">28</span>
+</button>
+<button class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors group">
+<span class="material-symbols-outlined group-active:-translate-y-1 transition-transform">chat_bubble</span>
+<span class="text-sm font-semibold">156</span>
+</button>
+<button class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</article>
+<!-- Nested Comments Section -->
+<div class="px-4 mt-6">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">Replies</h3>
+<div class="space-y-6">
+<!-- Parent Comment -->
+<div class="relative">
+<div class="flex gap-3">
+<div class="size-9 rounded-full bg-cover bg-center shrink-0 border border-slate-200 dark:border-slate-700" data-alt="Student portrait for profile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQEGz_eKJ0FbEgdNsEgz7LsjEtEuJIDzAThRItIjaMiPprO_RkETvfB8ze6I5yFgKKFxOm2JUEmqoYO1SywExvkprakqLAFrcCB2bW6kCceNjlq3yaajnZ59ewzWvNwg-N5BxYAp0YKY_adEDBq5p93_o__6YjKzML1WFcx8WrgHFCLFe2JAaXlaDs0B40FY8wgT1hqgUQpiYgNZ9kkMnzKs37QpCHr1qfRUuxRo2y4HgngnlJBKSereX4jQcmoHTA5oPzMjsdIQg');"></div>
+<div class="flex-1">
+<div class="bg-slate-100 dark:bg-[#1e2124] p-3 rounded-2xl rounded-tl-none inline-block max-w-full">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-sm font-bold">Sarah Miller</span>
+<span class="text-[10px] text-slate-500">• 1h ago</span>
+</div>
+<p class="text-sm leading-relaxed">I think the Library Cafe is too loud during finals week, honestly. 😅</p>
+</div>
+<div class="flex items-center gap-4 mt-2 ml-1">
+<button class="text-[11px] font-bold text-slate-500">Like</button>
+<button class="text-[11px] font-bold text-slate-500">Reply</button>
+</div>
+<!-- Nested Replies -->
+<div class="mt-4 space-y-4 relative">
+<!-- Connecting Line -->
+<div class="absolute left-[-22px] top-[-30px] bottom-10 w-[2px] bg-slate-200 dark:bg-slate-800 rounded-full"></div>
+<!-- Reply 1 -->
+<div class="flex gap-3 relative">
+<!-- L-shape connector -->
+<div class="absolute left-[-22px] top-4 w-4 h-[2px] bg-slate-200 dark:bg-slate-800"></div>
+<div class="size-8 rounded-full bg-cover bg-center shrink-0 border border-slate-200 dark:border-slate-700" data-alt="Student avatar with headphones" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDIN_xeQroGfSXWYkqckNWZLb3HvU2T6QEgFwSvHHEPsFUc02DvB3WUHMmbHguN5SnNMOnuy0-ix_8AYdryU8kmlA5wf8a9vOwxb4YNKoxUZ2WfQF1YOrTwfnh81WHQiRCWxmxOgTRsV9hQdZXAjJ5FZyQBLq4HufL7LdDqavIuY1vXacVeWSDMdDaaBpQ-fRcTaBba9Cro-TS9_-U-odTVkIGmeKdXKtTEPPqyToRYK1NzKtxYGRRHREeJiG6b1gpYgq8e_XAcXMs');"></div>
+<div class="flex-1">
+<div class="bg-slate-100 dark:bg-[#1e2124] p-3 rounded-2xl rounded-tl-none inline-block">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-sm font-bold italic">PseudonymNode</span>
+<span class="text-[10px] px-1 bg-slate-200 dark:bg-slate-700 rounded text-slate-500">Pseudo</span>
+</div>
+<p class="text-sm leading-relaxed">Totally agree, try the 3rd floor nook. It's hidden but so quiet.</p>
+</div>
+<div class="flex items-center gap-4 mt-2 ml-1">
+<button class="text-[11px] font-bold text-slate-500">Like</button>
+<button class="text-[11px] font-bold text-slate-500">Reply</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Another Top Level Comment -->
+<div class="flex gap-3">
+<div class="size-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-xl">school</span>
+</div>
+<div class="flex-1">
+<div class="bg-slate-100 dark:bg-[#1e2124] p-3 rounded-2xl rounded-tl-none inline-block">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-sm font-bold text-accent-gold">Official Hub</span>
+<span class="text-[10px] text-slate-500">• 30m ago</span>
+</div>
+<p class="text-sm leading-relaxed">Don't forget the Student Union Hub has free muffins after 8 PM! 🧁</p>
+</div>
+<div class="flex items-center gap-4 mt-2 ml-1">
+<button class="text-[11px] font-bold text-slate-500">Like</button>
+<button class="text-[11px] font-bold text-slate-500">Reply</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Reply Bar -->
+<div class="fixed bottom-0 inset-x-0 bg-white/90 dark:bg-[#17191c]/90 ios-blur border-t border-slate-200 dark:border-slate-800 pb-safe shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<div class="max-w-2xl mx-auto px-4 py-3 flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center shrink-0 hidden sm:block" data-alt="My own student profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgwUMNGT-sR12a9gyDXVkPD8G8Rs_m7KYC1BVuUbsM3hiJ4VZhDVdHHGyA9k-EeT5DNNCMD9dwj6jcvs9Z0evezYac1pZfpB6DIUS7C5szW1nYrBCA0NIL76i7UnTNwaKK9BzWxYkbeA6n_Rb7zpFZ4B-7CHxHd-h4UdmDiWbKxxWEI0PtT6l4bKApZp33X-MpbsM2mZ5n4zkbtQpCRuk3uD7SorT0eukaqw_vk_0qXCcDvJQtxFqCsdg8kZ4dsMAD5LoJQi2BShE');"></div>
+<div class="relative flex-1">
+<input class="w-full h-11 bg-slate-100 dark:bg-slate-800 border-none rounded-full px-5 text-sm focus:ring-2 focus:ring-primary placeholder-slate-500" placeholder="Add a reply..." type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+<button class="p-1.5 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined text-xl">image</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined text-xl">alternate_email</span>
+</button>
+</div>
+</div>
+<button class="h-11 px-6 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                Post
+            </button>
+</div>
+<!-- iOS Home Indicator Spacing -->
+<div class="h-6"></div>
+</div>
+</body></html>

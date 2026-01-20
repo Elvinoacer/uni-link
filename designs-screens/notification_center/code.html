@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1387ec",
+              "background-light": "#ffffff",
+              "background-dark": "#22252a",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<title>Notification Center</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111518] dark:text-white antialiased">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 flex items-center bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-3 border-b border-gray-100 dark:border-gray-800 justify-between">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary cursor-pointer p-1" style="font-size: 24px;">settings</span>
+</div>
+<h1 class="text-[#111518] dark:text-white text-lg font-bold leading-tight tracking-tight">Notifications</h1>
+<button class="text-primary text-sm font-semibold hover:bg-primary/10 px-3 py-1 rounded-full transition-colors">
+            Clear All
+        </button>
+</nav>
+<main class="max-w-md mx-auto pb-12">
+<!-- Priority Section -->
+<section class="mt-4">
+<div class="flex items-center justify-between px-4 pb-2 pt-4">
+<h3 class="text-[#111518] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Priority</h3>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Batching Active</span>
+</div>
+<!-- Priority Card: Social -->
+<div class="px-4 py-2">
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-gray-800 p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100 dark:border-gray-700">
+<div class="flex flex-[2_2_0px] flex-col gap-3">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-pink-500" style="font-size: 16px; font-variation-settings: 'FILL' 1;">favorite</span>
+<p class="text-[#617789] dark:text-gray-400 text-xs font-semibold uppercase tracking-wider">Social • 2m ago</p>
+</div>
+<p class="text-[#111518] dark:text-white text-base font-bold leading-tight">5 people liked your post</p>
+<p class="text-[#617789] dark:text-gray-400 text-sm font-normal italic leading-normal truncate italic opacity-80">"Looking for a study buddy for Econ 101"</p>
+</div>
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-semibold shadow-sm hover:bg-primary/90 transition-all w-fit">
+<span>View Post</span>
+</button>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-gray-50 dark:border-gray-700" data-alt="Blurred group of students studying in a library" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBj0qVs2Y-Ld3X9CRkuMmYu5aUyPxWYURzDdmABYnU6YkP9wAgzSluH55w7pMwvis5KZPzCW4E_yPLz46pfEpj9-RPP1eF50Sdzhd77AOLZ4fH5zx3uxc9Vz6Rzhu_bDfgQIlr7u0X_bLejY427I6NWpvKSAsesMPwGpxLtqxOKKrykYYY9sTWrvMgOYqUjYZ3kMrZem29oLkzJFnpSgEfXDlgLzHtnw7f0qFAJ9qpucIARwhm0IBWZ0mMsEAdfv9B7LDMBNNBRx-U");'>
+</div>
+</div>
+</div>
+<!-- Priority Card: Marketplace -->
+<div class="px-4 py-2">
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-gray-800 p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100 dark:border-gray-700">
+<div class="flex flex-[2_2_0px] flex-col gap-3">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-emerald-500" style="font-size: 16px; font-variation-settings: 'FILL' 1;">sell</span>
+<p class="text-[#617789] dark:text-gray-400 text-xs font-semibold uppercase tracking-wider">Marketplace • 10m ago</p>
+</div>
+<p class="text-[#111518] dark:text-white text-base font-bold leading-tight">New Marketplace inquiry</p>
+<p class="text-[#617789] dark:text-gray-400 text-sm font-normal leading-normal">2 users are interested in 'Calculus Early Transcendentals'</p>
+</div>
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-[#f0f2f4] dark:bg-gray-700 text-[#111518] dark:text-white text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all w-fit">
+<span>Open Chat</span>
+</button>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-gray-50 dark:border-gray-700" data-alt="A thick mathematics textbook on a wooden desk" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdWvxR9Qv68UaPL0yfR3YY2Cz_EjyVLZBKDWAhbZqVkdVx1Bge0ul4LYZEX9VzRBtQzx_RTjEolNiAUOhv0BDTQhbcNkfistjzcV8BLZI6VzX2zYXwJ0R5NpB3Xh-wuMk-EAQFeGQwPTAEPWPyiIPgDp-3Nl4ZGnAtjClrDpC033cv-pqdGTJQODjsSFE5779zFuo-ZtcU2kMBlRJw8zq1rD_Ju0n7Jf0TYcpE9uodyfzc9ovO0h3Qhy23Q2tqdChRfn7LBqeIMQs");'>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Section -->
+<section class="mt-6">
+<h3 class="text-[#111518] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-4">Recent</h3>
+<div class="flex flex-col">
+<!-- Mention Item -->
+<div class="flex items-start gap-4 px-4 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border-b border-gray-50 dark:border-gray-800 relative group">
+<div class="absolute left-1 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-full opacity-100"></div>
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Profile photo of a smiling male student" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACaYISxt428C_oD2RDJ39EF23oVLP1AzAPDX43o744xJXrKilC9T2n8HkVElORNfEIqpYy8Gti4EnDed6Wp2_Oa7xAQ0gFnA0j82A8KuPpN-GI1b84_Asi_5lpwl7Ekx87NEbvVnDhkti9lUuig4Zq2UVTBYhG4yTcbZIB1rbn8jYA8PQBS-5qwzuFNkassCVcjnDpJsQQSwz9gC6549WyXbjvmB4_6nubkaTjirRBXrbOn5ZLMJz-XD7yvFZsWIVCkvFchdcLKdQ');"></div>
+<div class="absolute -right-1 -bottom-1 bg-primary border-2 border-white dark:border-gray-900 rounded-full p-0.5">
+<span class="material-symbols-outlined text-white" style="font-size: 12px; font-variation-settings: 'FILL' 1;">alternate_email</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold text-[#111518] dark:text-white leading-tight">Alex Rivera <span class="font-normal text-gray-500">tagged you in a comment</span></p>
+<span class="text-[11px] text-[#617789] whitespace-nowrap ml-2">1h ago</span>
+</div>
+<p class="text-sm text-[#617789] dark:text-gray-400 mt-1 line-clamp-1">"Check this out! The library finally opened the new study pods."</p>
+</div>
+</div>
+<!-- Event Reminder Item -->
+<div class="flex items-start gap-4 px-4 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border-b border-gray-50 dark:border-gray-800">
+<div class="relative">
+<div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-600" style="font-size: 28px; font-variation-settings: 'FILL' 0;">calendar_month</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold text-[#111518] dark:text-white leading-tight">Campus Hackathon</p>
+<span class="text-[11px] text-[#617789] whitespace-nowrap ml-2">1h ago</span>
+</div>
+<p class="text-sm text-[#617789] dark:text-gray-400 mt-1">Starting in 1 hour at the CS Building. Don't forget your student ID!</p>
+<div class="mt-3 flex gap-2">
+<button class="px-3 py-1.5 bg-primary/10 text-primary text-xs font-bold rounded-lg hover:bg-primary/20 transition-colors">View Map</button>
+</div>
+</div>
+</div>
+<!-- Follow Item -->
+<div class="flex items-start gap-4 px-4 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border-b border-gray-50 dark:border-gray-800">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Profile photo of a female student with glasses" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA1IqIjukSxlFildo8Gs6ZwUexK6UtUw6P3Ol_bS11rbEp6hrYERZKYTcXMLq3Kx_GaigmPD5dXSCctoyTjCF6tUU7JHm0jy6cSz6ee7eCclzHqj5FYWdPnJXinS6PDsKJeZsJKLSmoMU18Xc5nl0rdSKmFxRvMn6aNULk8ZfRZ4f60PM6BielfXo3bYbBGzByu9IFO3zRtyosxIxRhaltSRw_2zoiDhWdAlJTr-4_Pv10hIPhzw9mRcEu-vqf-gofQ-E_T_uVYwkc');"></div>
+<div class="absolute -right-1 -bottom-1 bg-blue-500 border-2 border-white dark:border-gray-900 rounded-full p-0.5">
+<span class="material-symbols-outlined text-white" style="font-size: 12px; font-variation-settings: 'FILL' 1;">person_add</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold text-[#111518] dark:text-white leading-tight">Sarah Chen <span class="font-normal text-gray-500">started following you</span></p>
+<span class="text-[11px] text-[#617789] whitespace-nowrap ml-2">3h ago</span>
+</div>
+<p class="text-xs text-primary font-semibold mt-1">Follow Back</p>
+</div>
+</div>
+<!-- Discussion Item -->
+<div class="flex items-start gap-4 px-4 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border-b border-gray-50 dark:border-gray-800">
+<div class="relative">
+<div class="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-indigo-600" style="font-size: 28px; font-variation-settings: 'FILL' 1;">forum</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<p class="text-sm font-bold text-[#111518] dark:text-white leading-tight">Housing Thread Updated</p>
+<span class="text-[11px] text-[#617789] whitespace-nowrap ml-2">5h ago</span>
+</div>
+<p class="text-sm text-[#617789] dark:text-gray-400 mt-1 line-clamp-2">Someone replied to your comment in 'Spring 2024 Off-Campus Housing Tips'</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer / Empty State Filler -->
+<div class="flex flex-col items-center justify-center py-12 px-8 text-center opacity-30">
+<span class="material-symbols-outlined text-4xl mb-2">notifications_none</span>
+<p class="text-sm">You've reached the end of your notifications.</p>
+</div>
+</main>
+<!-- Navigation Tab Bar (Simulated) -->
+<div class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-t border-gray-100 dark:border-gray-800 flex justify-around items-center py-2 px-6">
+<div class="flex flex-col items-center gap-0.5 text-gray-400">
+<span class="material-symbols-outlined" style="font-size: 24px;">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center gap-0.5 text-gray-400">
+<span class="material-symbols-outlined" style="font-size: 24px;">storefront</span>
+<span class="text-[10px] font-medium">Market</span>
+</div>
+<div class="flex flex-col items-center gap-0.5 text-primary">
+<div class="relative">
+<span class="material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+</div>
+<span class="text-[10px] font-medium">Alerts</span>
+</div>
+<div class="flex flex-col items-center gap-0.5 text-gray-400">
+<span class="material-symbols-outlined" style="font-size: 24px;">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</div>
+</div>
+</body></html>

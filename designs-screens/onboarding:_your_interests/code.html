@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding: Your Interests</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ea2a33",
+                        "background-light": "#fafaf9",
+                        "background-dark": "#21242c",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .chip-shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .selected-chip {
+            box-shadow: 0 8px 16px rgba(234, 42, 51, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display transition-colors duration-300">
+<!-- Top Navigation / Progress -->
+<header class="flex items-center justify-between px-6 py-4">
+<button class="p-2 -ml-2 text-zinc-900 dark:text-zinc-100">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios</span>
+</button>
+<div class="flex gap-1.5">
+<div class="h-1.5 w-6 rounded-full bg-primary/20"></div>
+<div class="h-1.5 w-6 rounded-full bg-primary/20"></div>
+<div class="h-1.5 w-12 rounded-full bg-primary"></div>
+</div>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<main class="flex-1 px-6 pt-8 pb-32 flex flex-col items-center">
+<!-- Headline Section -->
+<div class="text-center mb-10">
+<h1 class="text-[#1b0e0e] dark:text-white text-4xl font-extrabold tracking-tight leading-tight mb-3">
+                Customize your feed
+            </h1>
+<p class="text-zinc-600 dark:text-zinc-400 text-lg font-normal max-w-[280px] mx-auto">
+                Select the topics you want to see most on your campus.
+            </p>
+</div>
+<!-- Interest Chip Grid -->
+<div class="grid grid-cols-2 gap-4 w-full max-w-sm">
+<!-- Campus News (Selected State Example) -->
+<div class="group cursor-pointer">
+<div class="flex flex-col items-center justify-center gap-3 p-5 rounded-[2.5rem] bg-primary text-white selected-chip transition-all hover:scale-105 active:scale-95">
+<div class="bg-white/20 p-3 rounded-full">
+<span class="material-symbols-outlined text-3xl">newspaper</span>
+</div>
+<span class="font-bold text-sm">Campus News</span>
+</div>
+</div>
+<!-- Marketplace -->
+<div class="group cursor-pointer">
+<div class="flex flex-col items-center justify-center gap-3 p-5 rounded-[2.5rem] bg-white dark:bg-zinc-800 border-2 border-zinc-100 dark:border-zinc-700 chip-shadow transition-all hover:scale-105 active:scale-95">
+<div class="bg-zinc-50 dark:bg-zinc-700 p-3 rounded-full text-zinc-600 dark:text-zinc-300">
+<span class="material-symbols-outlined text-3xl">shopping_bag</span>
+</div>
+<span class="text-zinc-800 dark:text-zinc-200 font-bold text-sm">Marketplace</span>
+</div>
+</div>
+<!-- Parties -->
+<div class="group cursor-pointer">
+<div class="flex flex-col items-center justify-center gap-3 p-5 rounded-[2.5rem] bg-white dark:bg-zinc-800 border-2 border-zinc-100 dark:border-zinc-700 chip-shadow transition-all hover:scale-105 active:scale-95">
+<div class="bg-zinc-50 dark:bg-zinc-700 p-3 rounded-full text-zinc-600 dark:text-zinc-300">
+<span class="material-symbols-outlined text-3xl">auto_awesome</span>
+</div>
+<span class="text-zinc-800 dark:text-zinc-200 font-bold text-sm">Parties</span>
+</div>
+</div>
+<!-- Study Groups (Selected State Example) -->
+<div class="group cursor-pointer">
+<div class="flex flex-col items-center justify-center gap-3 p-5 rounded-[2.5rem] bg-primary text-white selected-chip transition-all hover:scale-105 active:scale-95">
+<div class="bg-white/20 p-3 rounded-full">
+<span class="material-symbols-outlined text-3xl">menu_book</span>
+</div>
+<span class="font-bold text-sm">Study Groups</span>
+</div>
+</div>
+<!-- Sports -->
+<div class="group cursor-pointer">
+<div class="flex flex-col items-center justify-center gap-3 p-5 rounded-[2.5rem] bg-white dark:bg-zinc-800 border-2 border-zinc-100 dark:border-zinc-700 chip-shadow transition-all hover:scale-105 active:scale-95">
+<div class="bg-zinc-50 dark:bg-zinc-700 p-3 rounded-full text-zinc-600 dark:text-zinc-300">
+<span class="material-symbols-outlined text-3xl">sports_basketball</span>
+</div>
+<span class="text-zinc-800 dark:text-zinc-200 font-bold text-sm">Sports</span>
+</div>
+</div>
+<!-- Lost & Found -->
+<div class="group cursor-pointer">
+<div class="flex flex-col items-center justify-center gap-3 p-5 rounded-[2.5rem] bg-white dark:bg-zinc-800 border-2 border-zinc-100 dark:border-zinc-700 chip-shadow transition-all hover:scale-105 active:scale-95">
+<div class="bg-zinc-50 dark:bg-zinc-700 p-3 rounded-full text-zinc-600 dark:text-zinc-300">
+<span class="material-symbols-outlined text-3xl">search_check</span>
+</div>
+<span class="text-zinc-800 dark:text-zinc-200 font-bold text-sm">Lost &amp; Found</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom CTA -->
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light/95 dark:via-background-dark/95 to-transparent pt-12">
+<div class="max-w-sm mx-auto flex flex-col gap-4">
+<button class="w-full bg-primary text-white py-5 rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:brightness-110 active:scale-[0.98] transition-all">
+                Finish
+            </button>
+<!-- iOS Home Indicator Safe Area Padding -->
+<div class="h-4"></div>
+</div>
+</div>
+<!-- Background Pattern Decoration -->
+<div class="fixed top-0 right-0 -z-10 opacity-10 dark:opacity-5 pointer-events-none">
+<svg height="300" viewbox="0 0 200 200" width="300" xmlns="http://www.w3.org/2000/svg">
+<path d="M45.7,-78.3C58.3,-71.4,66.9,-56.9,73.1,-42.6C79.4,-28.3,83.4,-14.2,82.2,-0.7C81,12.8,74.7,25.6,67.1,38.1C59.5,50.6,50.7,62.7,39.1,70.1C27.5,77.5,13.8,80.2,-0.1,80.4C-14,80.6,-28,78.3,-40.5,71.7C-53,65.1,-64.1,54.2,-71.9,41.4C-79.7,28.6,-84.3,14.3,-84.1,0.1C-83.9,-14.1,-78.9,-28.2,-70.6,-40.1C-62.2,-52,-50.5,-61.7,-37.7,-68.5C-24.9,-75.2,-12.4,-79.1,1.7,-81.9C15.8,-84.8,33.1,-85.2,45.7,-78.3Z" fill="#ea2a33" transform="translate(100 100)"></path>
+</svg>
+</div>
+</body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0059b2",
+                        "background-light": "#ffffff",
+                        "background-dark": "#1a1a1a",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .blur-overlay {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-slate-200 dark:bg-zinc-900 min-h-screen flex items-center justify-center p-4">
+<!-- Backdrop Simulation -->
+<div class="fixed inset-0 bg-black/60 z-0"></div>
+<!-- Modal Container -->
+<div class="relative z-10 w-full max-w-md bg-background-light dark:bg-background-dark rounded-xl shadow-2xl overflow-hidden flex flex-col">
+<!-- BottomSheetHandle (Stylized as Top Handle for Modal) -->
+<div class="flex flex-col items-stretch bg-background-light dark:bg-background-dark pt-2">
+<button class="flex h-2 w-full items-center justify-center">
+<div class="h-1.5 w-12 rounded-full bg-slate-300 dark:bg-zinc-700"></div>
+</button>
+</div>
+<!-- TopAppBar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark px-4 py-3 justify-between border-b border-slate-100 dark:border-zinc-800">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">close</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Verify Your Claim</h2>
+</div>
+<div class="overflow-y-auto max-h-[80vh]">
+<!-- HeaderImage with Security Blur -->
+<div class="@container">
+<div class="p-4">
+<div class="relative w-full aspect-video bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-lg bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700" data-alt="Blurred silver laptop on a wooden table" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDMmmGekk9FzT6MvmhECwpn_1cbxtwgqJPgqXjz5fpLcwQHRos8Yh6KED2KFp9okK2PyHIb6jlRsmJWQY5QJtMyc0-aUyFl9XmxAgeu0e935K40iTZPiHJTvXV7UOULfgK73jirymFl7MRzTL-NAK4yePO4yUseK_cQDrF3tLiRj8EPghYDcEAKbGGlARowCWIhFEV6Z703Xg_c6NUfYxMliUiURQ6MMdRgwpeyG2jVrksNBHaagBaNlnWPDm52iha2SoQi9HJ00Bs");'>
+<!-- Blur Overlay for Security -->
+<div class="absolute inset-0 blur-overlay flex items-center justify-center">
+<div class="bg-white/90 dark:bg-zinc-900/90 px-4 py-2 rounded-full shadow-sm border border-white/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">lock</span>
+<span class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-widest">Visual Privacy Active</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HeadlineText -->
+<div class="px-4 pt-2">
+<span class="text-[10px] font-extrabold text-primary uppercase tracking-[0.2em]">Finder's Security Question</span>
+<h3 class="text-slate-900 dark:text-slate-100 tracking-tight text-xl font-bold leading-tight pt-1 pb-2">
+                    What is the specific sticker on the back of this laptop?
+                </h3>
+</div>
+<!-- BodyText Context -->
+<div class="px-4">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-relaxed">
+                    The finder requested this information to ensure the item is returned to its rightful owner. Please be as descriptive as possible.
+                </p>
+</div>
+<!-- Input Section -->
+<div class="p-4 flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase px-1">Your Answer</label>
+<textarea class="w-full rounded-lg border-slate-200 dark:border-zinc-700 bg-slate-50 dark:bg-zinc-800/50 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-400 dark:placeholder:text-zinc-600 transition-all text-sm" placeholder="e.g. A small circular NASA sticker on the top left corner..." rows="3"></textarea>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-3 pt-2 pb-6">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2">
+                        Submit Claim
+                        <span class="material-symbols-outlined text-sm">send</span>
+</button>
+<button class="w-full bg-transparent hover:bg-slate-100 dark:hover:bg-zinc-800 text-slate-500 dark:text-slate-400 font-semibold py-3 rounded-xl transition-all">
+                        Cancel
+                    </button>
+</div>
+</div>
+</div>
+<!-- Extra padding for iOS home indicator -->
+<div class="h-6 bg-background-light dark:bg-background-dark"></div>
+</div>
+</body></html>

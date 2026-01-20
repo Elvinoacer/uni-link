@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>University Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#087d7d",
+                        "background-light": "#faf6f0",
+                        "background-dark": "#1d293a",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Spline Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#111818] dark:text-white min-h-screen pb-24">
+<!-- Top App Bar -->
+<nav class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-3 flex items-center justify-between border-b border-primary/10">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-wider font-bold opacity-60">Campus</p>
+<p class="text-sm font-bold leading-none">Stanford Central</p>
+</div>
+</div>
+<h2 class="text-lg font-bold tracking-tight">Marketplace</h2>
+<div class="flex gap-2">
+<button class="size-10 rounded-full flex items-center justify-center bg-white dark:bg-slate-800 shadow-sm">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+</div>
+</nav>
+<!-- Search Bar -->
+<div class="px-4 py-4">
+<label class="flex flex-col w-full group">
+<div class="flex w-full items-center rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-transparent focus-within:border-primary/30 transition-all px-4 h-14">
+<span class="material-symbols-outlined text-primary/60">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-base placeholder:text-gray-400 dark:placeholder:text-gray-500" placeholder="Search textbooks, dorm gear..."/>
+<span class="material-symbols-outlined text-gray-400 cursor-pointer">tune</span>
+</div>
+</label>
+</div>
+<!-- Featured Action: ISBN Scanner -->
+<div class="px-4 mb-6">
+<button class="w-full relative overflow-hidden rounded-xl bg-primary p-5 flex items-center gap-4 text-white shadow-lg shadow-primary/20 group active:scale-[0.98] transition-transform">
+<div class="absolute right-[-10px] top-[-10px] opacity-10">
+<span class="material-symbols-outlined text-[120px]">barcode_scanner</span>
+</div>
+<div class="size-14 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-md">
+<span class="material-symbols-outlined text-3xl">barcode_scanner</span>
+</div>
+<div class="text-left">
+<h3 class="font-bold text-lg leading-tight">List Textbook via ISBN</h3>
+<p class="text-white/80 text-sm">Instant pricing &amp; auto-filled details</p>
+</div>
+</button>
+</div>
+<!-- Category Tabs -->
+<div class="mb-6">
+<div class="flex items-center justify-between px-4 mb-3">
+<h3 class="text-lg font-bold">Categories</h3>
+<button class="text-primary text-sm font-semibold">View All</button>
+</div>
+<div class="flex gap-3 overflow-x-auto px-4 hide-scrollbar">
+<a class="flex flex-col items-center gap-2 shrink-0 group" href="#">
+<div class="size-16 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border-2 border-primary flex items-center justify-center text-primary transition-all">
+<span class="material-symbols-outlined text-2xl">menu_book</span>
+</div>
+<span class="text-xs font-bold text-primary">Textbooks</span>
+</a>
+<a class="flex flex-col items-center gap-2 shrink-0 group" href="#">
+<div class="size-16 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border-2 border-transparent group-active:border-primary flex items-center justify-center text-gray-500 dark:text-gray-400 transition-all">
+<span class="material-symbols-outlined text-2xl">bed</span>
+</div>
+<span class="text-xs font-semibold">Dorm</span>
+</a>
+<a class="flex flex-col items-center gap-2 shrink-0 group" href="#">
+<div class="size-16 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border-2 border-transparent group-active:border-primary flex items-center justify-center text-gray-500 dark:text-gray-400 transition-all">
+<span class="material-symbols-outlined text-2xl">devices</span>
+</div>
+<span class="text-xs font-semibold">Electronics</span>
+</a>
+<a class="flex flex-col items-center gap-2 shrink-0 group" href="#">
+<div class="size-16 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border-2 border-transparent group-active:border-primary flex items-center justify-center text-gray-500 dark:text-gray-400 transition-all">
+<span class="material-symbols-outlined text-2xl">confirmation_number</span>
+</div>
+<span class="text-xs font-semibold">Tickets</span>
+</a>
+<a class="flex flex-col items-center gap-2 shrink-0 group" href="#">
+<div class="size-16 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border-2 border-transparent group-active:border-primary flex items-center justify-center text-gray-500 dark:text-gray-400 transition-all">
+<span class="material-symbols-outlined text-2xl">apparel</span>
+</div>
+<span class="text-xs font-semibold">Clothing</span>
+</a>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="px-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold">Recent Listings</h3>
+<div class="flex gap-2">
+<span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full font-bold">Local: 2 miles</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Product Card 1 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm flex flex-col border border-primary/5">
+<div class="relative aspect-square bg-gray-100 dark:bg-slate-700">
+<img class="w-full h-full object-cover" data-alt="University calculus textbook on a wooden desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdsw-EyC2O1MSzo1CCIvkRlceQkBWAf40LZRx-HfbnEliNM-fXilIN4quoxjvLGu7PvAP9npIxs2-LDbMIWpEMW-QDRP0l73BJR5CdPazjGVp16aTqfDlJbfgf4mZwyqyQqqOTDOIb3S1vojQQbFKVzBtQlMgeN-GKTE2weNhQnzmY0Q0HVXYzpEhAH8JKCZxHWyH-hD6JHIrlJ_q3yYDfhD4nCOX7jhv0sQaKlW2468zk204xoYq9R_a9AaKwmtx1I_S5uhOQ2Oc"/>
+<div class="absolute top-2 left-2 px-2 py-1 bg-yellow-400 text-black text-[10px] font-black rounded uppercase">Used</div>
+<button class="absolute top-2 right-2 size-8 rounded-full bg-white/80 dark:bg-black/40 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+<div class="p-3 flex-1 flex flex-col">
+<h4 class="font-bold text-sm line-clamp-2 leading-tight mb-1">Calculus: Early Transcendentals</h4>
+<p class="text-lg font-black text-primary mb-3">$45</p>
+<div class="mt-auto flex items-center gap-2">
+<img class="size-6 rounded-full border border-background-light" data-alt="Student profile headshot avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAde3sogABe6MSoG_DIbT2LT8431xhD5Kkqaz4dMbNyYiF2CfLgJOci0ZF0LqCpuggJZik0MOFfvEoiuTcGSar1nsL1ZBSbTfq2_w_mxg9ea7c2HsU8lmBxQYEwfZz_JGUFQgxJx_2iBEzPj-JJVMp1evtaexmAYhEJr7lZrAJpFPgBHU4F7xEgLc_q7NuTKX4OPMiN9pBRe341KCyylZrGbR4YywhyDUINUffYOYubAdf3LvQjxk20WxgstS8kNSu1FWNzswObujo"/>
+<button class="flex-1 bg-primary text-white text-[11px] font-bold py-2 px-1 rounded-lg transition-colors active:bg-primary/90">
+                            Message
+                        </button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm flex flex-col border border-primary/5">
+<div class="relative aspect-square bg-gray-100 dark:bg-slate-700">
+<img class="w-full h-full object-cover" data-alt="Clean small white dorm mini fridge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGKZIs3mIr-yNkoFK_O89hSg0U9PxTPEHsaHe7R57mjOYST242b_uHmN_HFCJJVDcvi1ZfIJKC-8_t-qMvo8W47pU5P8LlbSmN-snR2TbKoq15HaCaBY_404kp4JM-AW8jZxasDgEH9v3VcRoUBo23-nRMzddlGjbi79pd_iubMuCq4IaOhvGvLpuDVrGNbecWrWJBXH3KN1fdqlVFtUzdUA_DeUHlFfYw2Ug4ybT5sE4-cGDw2EM9vlZBd2elzPGQDtSvkB50AuA"/>
+<div class="absolute top-2 left-2 px-2 py-1 bg-green-500 text-white text-[10px] font-black rounded uppercase">New</div>
+<button class="absolute top-2 right-2 size-8 rounded-full bg-white/80 dark:bg-black/40 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+<div class="p-3 flex-1 flex flex-col">
+<h4 class="font-bold text-sm line-clamp-2 leading-tight mb-1">Mini Fridge (Energy Star)</h4>
+<p class="text-lg font-black text-primary mb-3">$60</p>
+<div class="mt-auto flex items-center gap-2">
+<img class="size-6 rounded-full border border-background-light" data-alt="Student profile headshot avatar female" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV_gBqNkFrmWaBAQBz0N4EWprFyTwEGD2UF4j1F5dJ9F0_6xGbig7I7Hv7no1-PtXz18e23BS9tyvkXhWZYST3e2VPQWlqLQJYBtN6OLxUdo89UxF8oSh5bOhD6FdOVQRjBkwVWqniOc1sA28vdowjjIxIM9lmUse-TeF-5vCGZ_pRTN7srWO4MU7HjnR5z_1WrRV4U-jJdbYjVpsB-l6UEaLiWXUwSUaGWrLxIdNJW2UHGD3319jG_U3Xolq6DmfD32eTSDrJEsw"/>
+<button class="flex-1 bg-primary text-white text-[11px] font-bold py-2 px-1 rounded-lg transition-colors active:bg-primary/90">
+                            Message
+                        </button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm flex flex-col border border-primary/5">
+<div class="relative aspect-square bg-gray-100 dark:bg-slate-700">
+<img class="w-full h-full object-cover" data-alt="Golden ticket for university spring formal event" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl1eSUi3J2CoFpqaKddQ4j1W0nwVV3PN-f1hqa4zUfom8mxnM0GHspkpPq9aJZlozIP_JRrzvZbNjf7aRee6sV-qHOMyRxz_1RIJEXKglzDgn--IXObNhgoaJ3BfMRvS2YfE_godDUi5v0aLuwewpU7XQlObtblFhKHKPUika-rQJVFsS1Wbwcj4SaLvKfqUmSqW-rejN1_Aqn6vPyTUhIRMJKKPTLsx1aPm0KYoVxZrWUjQfwCHdSIpvG203D6aIzzzv-BkEAID0"/>
+<div class="absolute top-2 left-2 px-2 py-1 bg-green-500 text-white text-[10px] font-black rounded uppercase">New</div>
+<button class="absolute top-2 right-2 size-8 rounded-full bg-white/80 dark:bg-black/40 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-primary fill-current">favorite</span>
+</button>
+</div>
+<div class="p-3 flex-1 flex flex-col">
+<h4 class="font-bold text-sm line-clamp-2 leading-tight mb-1">Spring Formal Ticket</h4>
+<p class="text-lg font-black text-primary mb-3">$25</p>
+<div class="mt-auto flex items-center gap-2">
+<img class="size-6 rounded-full border border-background-light" data-alt="Student profile avatar male" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAafkH_gTL9OouISasm5cHjQVEd5tqfCPYnMhA84Jnjmgr5y0UjtcuJmP9YO5uGyAv6b4byuT-apiHDaciGMeLN8MMVBZTlfwcBFO8gZyCd-6c3Rxt3KywQPLYZRs1okF2kootJkRGJ7KwnX7o_Wwbevw68ajubALnIK38clZyoQYgeJ9tU5ouUpiuxuSeAaxRj841FXHkVaQo6G9qwzvjyuoBqF9DmCR3aGbnR-ijRPlkx_XzbY0ek4OXrp5EzdJpIJSRBdt_4pi4"/>
+<button class="flex-1 bg-primary text-white text-[11px] font-bold py-2 px-1 rounded-lg transition-colors active:bg-primary/90">
+                            Message
+                        </button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm flex flex-col border border-primary/5">
+<div class="relative aspect-square bg-gray-100 dark:bg-slate-700">
+<img class="w-full h-full object-cover" data-alt="Wireless noise cancelling headphones on a desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaTPrwE09vXnevn2j9o5gG95hlq8x9pfyL3JDf9Fo_oXUB1mJz8LAOvnabDExPapQXL0LAmZ_42ZM4WD8X8E_Vlu5GncGe-RWET9eflWj_k5bjXJFybOS1ZL7CJWANgfg1D-zKNa_jtz-Qv6R89PBSkGl9EKVy95VcTayICJeCYpyysHgAFJ1eiQOSr1tz58WICM03M7uw2CKJHCF1iu9nB8OwZlxQpuwx9ki5OmT8htaHUbkFlLl60jo_tIQZm_evKnpjpjMozbU"/>
+<div class="absolute top-2 left-2 px-2 py-1 bg-yellow-400 text-black text-[10px] font-black rounded uppercase">Used</div>
+<button class="absolute top-2 right-2 size-8 rounded-full bg-white/80 dark:bg-black/40 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+<div class="p-3 flex-1 flex flex-col">
+<h4 class="font-bold text-sm line-clamp-2 leading-tight mb-1">Sony Noise Cancelling</h4>
+<p class="text-lg font-black text-primary mb-3">$110</p>
+<div class="mt-auto flex items-center gap-2">
+<img class="size-6 rounded-full border border-background-light" data-alt="Student profile avatar smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm1-u32PoNtUeGUhbPy-gnnyFkR8Yn1nIijrX-j5RRaESBMlQ7NrltuTRZbnZ7i8c3mw3muu2g_JswP9mhqlkE9BzUKXqOoG7EoZOsNAnJlR2Sm0pRIZXhiYn92DVkwY3RNjEYtW7ZXvR5aggEWtKDhTzQua0sgIkN0x-_SNTBP2jkb3duawbVOgR0WKRvlTodZx60AZHnNkveiISNJAnTR0YFcK3HfKzp0RMxha8Rk_LcxmnvMhfXAzQXlZLj7H_AAuVbSIcITYY"/>
+<button class="flex-1 bg-primary text-white text-[11px] font-bold py-2 px-1 rounded-lg transition-colors active:bg-primary/90">
+                            Message
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (iOS Style) -->
+<div class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-gray-200 dark:border-slate-800 px-6 pb-6 pt-3 flex justify-between items-center z-[100]">
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Feed</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill-current">storefront</span>
+<span class="text-[10px] font-bold">Market</span>
+</button>
+<button class="relative -top-4 size-14 rounded-full bg-primary text-white shadow-lg shadow-primary/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">event_note</span>
+<span class="text-[10px] font-bold">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</div>
+</body></html>

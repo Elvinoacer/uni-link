@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5eb2ed",
+                        "background-light": "#ffffff",
+                        "background-dark": "#2e3138",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Custom scrollbar for message area */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#111518] antialiased">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-[430px] mx-auto border-x border-gray-100 dark:border-gray-800 shadow-2xl">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-3 border-b border-gray-100 dark:border-gray-700 justify-between">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center size-8 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-2xl text-[#111518] dark:text-white">chevron_left</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-primary/20" data-alt="Close up portrait of a college student Alex Rivera" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBP4Gs6897nRzNV4S6lqyUZhVqUnzAauTHvzVATfMJO5xxn2uj0-GVgxZrcnOCynZFl7vrw76dS9gowGw-H-sXI4H1b3yk2Eu-1DtNlFrtkdRNvuxBab_pR3mWVaTbWVG8TmFa9WO3dUMegEfpgrqXzfZPn-n0Ud4k4kZS4IatHgR59W2ku33v_2mR1iCCZXusDkuKg0XEtbSjhMNw40fo3zU_coAcyKcIamfev9vA7bhcH6YTdqvuaG1vGpoBN97FZpktxJCM8GsQ");'></div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<h2 class="text-[#111518] dark:text-white text-[15px] font-bold leading-tight">Alex Rivera</h2>
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<p class="text-[#637888] dark:text-gray-400 text-[11px] font-medium uppercase tracking-wider">Senior, CS Department</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-xl bg-transparent text-[#111518] dark:text-white">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-xl bg-transparent text-[#111518] dark:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Messages Area -->
+<main class="flex-1 overflow-y-auto p-4 space-y-4 hide-scrollbar">
+<!-- Encryption Notice -->
+<div class="flex flex-col items-center py-4 opacity-70">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-[11px] text-[#637888] dark:text-gray-300 font-medium">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                    Messages are end-to-end encrypted
+                </div>
+<p class="text-[10px] text-gray-400 mt-2 uppercase tracking-tighter">Tuesday, 10:24 AM</p>
+</div>
+<!-- SingleMessage (Left/Receiver) -->
+<div class="flex items-end gap-2 max-w-[85%]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 shrink-0 mb-1" data-alt="Student profile icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAyMsU6pOmvqJHdmYvGetiCtmBKbSn62_bpOgGUG_l7qwwz26ulIDPxk9tJNb179iW95Jq_IvVzDXg0LxxKYlIZm3F54LQLOEXcT7tIt7IWmRaQAub0e-nKyx8wog7aM3W-8F3xEWF-d9yDsn7T7vzjSW0fprHRp4OYTg4oq-DeVViifpcRzVpFuZj6d0HSuIIOS8Sstoqk8croibgdUlZTUm0ii61Jl0gz97Ox9akzulbMFjgBbO1c5jQP_teFInsJLJNTvLtZ4Q4");'></div>
+<div class="flex flex-col gap-1 items-start">
+<div class="text-sm font-normal leading-relaxed rounded-2xl rounded-bl-none px-4 py-3 bg-[#f0f3f4] dark:bg-gray-700 text-[#111518] dark:text-white shadow-sm">
+                        Hey! I saw your post on the campus trade board. Is that Python textbook still available?
+                    </div>
+</div>
+</div>
+<!-- SingleMessage (Right/Sender) -->
+<div class="flex items-end gap-2 justify-end">
+<div class="flex flex-col gap-1 items-end max-w-[85%]">
+<div class="text-sm font-normal leading-relaxed rounded-2xl rounded-br-none px-4 py-3 bg-primary text-white shadow-md shadow-primary/10">
+                        Yes, it is! I have it with me today. Are you on campus?
+                    </div>
+<div class="flex items-center gap-1 mt-0.5">
+<p class="text-[10px] text-gray-400">10:26 AM</p>
+<span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+</div>
+</div>
+</div>
+<!-- SingleMessage (Left/Receiver) -->
+<div class="flex items-end gap-2 max-w-[85%]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 shrink-0 mb-1" data-alt="Student profile icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD0A8Z78h5meLE94ZogmtcpjgffU2wVNdQiI0mZUgXCSkEsIYqMHpmNd6spS34dZz7qj8UeYGgLOqKGIZSFQAfd4fGc7R7WTaLIHEUfeAV-GQLSjRc0eNk9eOPDj3hSNxD1XVHSRc757kfSzAqNi_07KYD_p2Ou0qPPi04zXBTBikmQ0x48g2hcPjwwbYns0ulHKVu6asMjm8hKQQgRBg0nVzVYR_X2Gzoh3lHLMfbrNuS3tFu002eGAFvSZNUPgS-h0NtQO0Fogyw");'></div>
+<div class="flex flex-col gap-1 items-start">
+<div class="text-sm font-normal leading-relaxed rounded-2xl rounded-bl-none px-4 py-3 bg-[#f0f3f4] dark:bg-gray-700 text-[#111518] dark:text-white shadow-sm">
+                        Awesome. Yeah, I'm at the Student Union right now near the coffee shop. Could we meet there in about 20 mins?
+                    </div>
+</div>
+</div>
+<!-- Image Message (Left/Receiver) -->
+<div class="flex items-end gap-2 max-w-[85%]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 shrink-0 mb-1" data-alt="Student profile icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC92v6RReelzjaw3HxXF629VSXRlwiyJea_r22h4RjIkRM4KRtkl_XCzmGVRepnjX0hcv6LmAOyEFafpqG4XCWWkCgOl1rxhUOjp5K0i5NsItlrjO2-64ypFQNRikol4tvpKyJ1U1dE1XCtObz0snIOl8r4TkIAT8gCBDnKJtirmb1xnQ69KBkBmbbuUdBWsPZYbht20bvwJiM78MEGx8nl7pi1jRJZHhVsB--jFgo0FlHvEVuZ5Px2wja9qo3pzVS0Hc6N8IO638s");'></div>
+<div class="flex flex-col gap-1 items-start">
+<div class="rounded-2xl rounded-bl-none overflow-hidden bg-[#f0f3f4] dark:bg-gray-700 shadow-sm border border-gray-100 dark:border-gray-600">
+<div class="w-full aspect-video bg-cover bg-center" data-alt="A photo of the campus student union building" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAby1uQoM739mBB_CJFzvw18heSF77f_SLpEg1uhMHMCn5YBX1rMhWgdT51kDgohKcJsd6eIjthyLOXwkPS2UXOM45wa9hVs7dmvj37J_AkfM2TDH1D4_ytEj8d6-o4Cdqx1L5S9u7X8BwUDhpc8OXcEGpnApMk3ZCNxWqLiiTcdvEAlvMaZ9jOBasN_Z-xL-HIHow7tcAhD8ehh1y70PRG8KZbZ5aJDU9OrULM-byvbgFxv5eXFPIcfB9D573d5wsOroUIO3Xjsss');"></div>
+<div class="px-3 py-2 text-[12px] text-gray-500 dark:text-gray-300 italic">I'm sitting by the north entrance</div>
+</div>
+</div>
+</div>
+<!-- SingleMessage (Right/Sender) -->
+<div class="flex items-end gap-2 justify-end">
+<div class="flex flex-col gap-1 items-end max-w-[85%]">
+<div class="text-sm font-normal leading-relaxed rounded-2xl rounded-br-none px-4 py-3 bg-primary text-white shadow-md shadow-primary/10">
+                        Sounds perfect. I'll head over there now. I'm wearing a blue university hoodie!
+                    </div>
+<div class="flex items-center gap-1 mt-0.5">
+<p class="text-[10px] text-gray-400">10:28 AM</p>
+<span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+</div>
+</div>
+</div>
+<!-- Encrypted badge indicator -->
+<div class="flex justify-center pt-2">
+<div class="flex items-center gap-1.5 opacity-40">
+<span class="material-symbols-outlined text-[14px]">enhanced_encryption</span>
+<span class="text-[10px] uppercase font-bold tracking-[0.1em]">Secure Channel Active</span>
+</div>
+</div>
+</main>
+<!-- Composer -->
+<div class="bg-background-light dark:bg-background-dark border-t border-gray-100 dark:border-gray-700 px-4 pt-3 pb-8">
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<div class="flex-1 relative">
+<label class="flex items-center min-h-[44px] bg-[#f0f3f4] dark:bg-gray-800 rounded-full px-4 border border-transparent focus-within:border-primary/30 transition-all">
+<input class="w-full bg-transparent border-none focus:ring-0 text-[#111518] dark:text-white placeholder:text-[#637888] py-2 text-[14px]" placeholder="Message securely..." value=""/>
+<div class="flex items-center gap-2">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+</div>
+</label>
+</div>
+<button class="flex size-11 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/20 hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<!-- Secure Send Label (iOS style) -->
+<div class="flex justify-center mt-2">
+<div class="flex items-center gap-1 text-[9px] text-primary font-bold uppercase tracking-widest opacity-60">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+                    Secure Send Protocol
+                </div>
+</div>
+</div>
+</div>
+</body></html>

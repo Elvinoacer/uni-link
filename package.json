@@ -1,0 +1,23 @@
+{
+  "name": "uni-social-app",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:gateway": "npm run dev --workspace=@uni-social/gateway",
+    "dev:user-service": "npm run dev --workspace=@uni-social/user-service",
+    "dev:mobile": "cd apps/mobile && npm start",
+    "build": "npm run build --workspaces --if-present",
+    "install:all": "npm install && cd apps/mobile && npm install"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1f7693",
+                        "accent-gold": "#C8A840",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#121c20",
+                        "surface-dark": "#1c2b30",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .identity-card-active {
+            border: 2px solid #1f7693;
+            box-shadow: 0 0 15px rgba(31, 118, 147, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased">
+<div class="relative flex h-screen w-full max-w-[430px] mx-auto flex-col overflow-hidden border-x border-slate-200 dark:border-slate-800">
+<!-- TopAppBar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pt-8 justify-between">
+<div class="text-slate-900 dark:text-white flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10 uppercase tracking-widest text-xs opacity-60">Step 2 of 4</h2>
+</header>
+<!-- PageIndicators -->
+<div class="flex w-full flex-row items-center justify-center gap-2 py-2">
+<div class="h-1 w-6 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+<div class="h-1 w-12 rounded-full bg-primary"></div>
+<div class="h-1 w-6 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+<div class="h-1 w-6 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+</div>
+<main class="flex-1 overflow-y-auto px-6 pb-10">
+<!-- HeadlineText -->
+<div class="pt-8 pb-2">
+<h1 class="text-slate-900 dark:text-white text-[32px] font-bold leading-tight text-center tracking-tight">Your Campus Identity</h1>
+</div>
+<!-- BodyText -->
+<div class="pb-8">
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-relaxed text-center max-w-[280px] mx-auto">
+                    Switch between your professional self and a private alias anytime.
+                </p>
+</div>
+<!-- Identity Cards Selection -->
+<div class="space-y-6">
+<!-- Card: Real Name -->
+<div class="identity-card-active bg-white dark:bg-surface-dark p-5 rounded-xl border-2 border-transparent transition-all duration-300">
+<div class="flex items-start gap-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined !text-3xl">badge</span>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-center mb-1">
+<p class="text-primary text-[10px] font-bold uppercase tracking-[0.15em]">Verified Identity</p>
+<span class="material-symbols-outlined text-primary !text-lg">check_circle</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Real Name</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-snug mt-1">
+                                Used for Marketplace, Study Groups, and Networking.
+                            </p>
+<div class="mt-4">
+<label class="block text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1 px-1">Full Name</label>
+<input class="w-full bg-slate-50 dark:bg-background-dark border-none rounded-lg py-3 px-4 text-slate-900 dark:text-white focus:ring-1 focus:ring-primary text-sm" placeholder="e.g., Alex Johnson" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Card: Pseudonym -->
+<div class="bg-white dark:bg-surface-dark p-5 rounded-xl border border-slate-100 dark:border-slate-800 transition-all duration-300 opacity-90">
+<div class="flex items-start gap-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-accent-gold/10 text-accent-gold">
+<span class="material-symbols-outlined !text-3xl">masks</span>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-center mb-1">
+<p class="text-accent-gold text-[10px] font-bold uppercase tracking-[0.15em]">Privacy Mode</p>
+</div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Pseudonym</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-snug mt-1">
+                                Used for Confessions, Tips, and Anonymous Voting.
+                            </p>
+<div class="mt-4">
+<label class="block text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1 px-1">Alias</label>
+<input class="w-full bg-slate-50 dark:bg-background-dark border-none rounded-lg py-3 px-4 text-slate-900 dark:text-white focus:ring-1 focus:ring-primary text-sm" placeholder="e.g., BlueCoyote_22" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Privacy Note -->
+<div class="mt-8 flex items-center justify-center gap-2 px-4">
+<span class="material-symbols-outlined text-accent-gold !text-sm">security</span>
+<p class="text-slate-500 dark:text-slate-500 text-[11px] text-center font-medium leading-normal">
+                    You can toggle your active identity from the <span class="text-accent-gold">Quick Switcher</span> anytime.
+                </p>
+</div>
+</main>
+<!-- CTA Bottom Area -->
+<div class="p-6 pb-10 bg-background-light dark:bg-background-dark">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+                Continue to Campus
+            </button>
+<p class="text-center mt-4 text-xs text-slate-400 dark:text-slate-600">
+                By continuing, you agree to the Campus Trust &amp; Safety Policy.
+            </p>
+</div>
+</div>
+</body></html>

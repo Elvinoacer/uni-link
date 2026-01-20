@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Moderation Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ea2a33",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211111",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .ios-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#1b0e0e] dark:text-white transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 ios-blur border-b border-black/5 dark:border-white/5">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">shield_person</span>
+</div>
+<div>
+<h2 class="text-lg font-bold leading-tight">Moderation</h2>
+<p class="text-[10px] uppercase tracking-widest opacity-50 font-bold">University Admin</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-full bg-black/5 dark:bg-white/10">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-full bg-black/5 dark:bg-white/10">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+</div>
+</div>
+<!-- Summary Stats Section -->
+<div class="flex gap-3 p-4 pt-2 overflow-x-auto no-scrollbar">
+<div class="flex min-w-[140px] flex-1 flex-col gap-1 rounded-2xl p-4 bg-primary text-white shadow-lg shadow-primary/20">
+<p class="text-xs font-medium opacity-80">Pending Reports</p>
+<div class="flex items-baseline gap-1">
+<p class="text-2xl font-bold">42</p>
+<span class="text-[10px] bg-white/20 px-1.5 py-0.5 rounded-full">+4 new</span>
+</div>
+</div>
+<div class="flex min-w-[140px] flex-1 flex-col gap-1 rounded-2xl p-4 bg-black dark:bg-white/10 border border-white/5 shadow-lg">
+<p class="text-xs font-medium opacity-60">Active Bans</p>
+<p class="text-2xl font-bold">15</p>
+</div>
+</div>
+</nav>
+<main class="pb-24">
+<!-- Filter Bar -->
+<div class="sticky top-[148px] z-40 bg-background-light/90 dark:bg-background-dark/90 py-3 backdrop-blur-md">
+<div class="flex gap-2 px-4 overflow-x-auto no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-4 text-white text-sm font-semibold">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span>All</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 px-4 text-sm font-medium">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>Social</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 px-4 text-sm font-medium">
+<span class="material-symbols-outlined text-sm">storefront</span>
+<span>Marketplace</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 px-4 text-sm font-medium">
+<span class="material-symbols-outlined text-sm">find_in_page</span>
+<span>Lost &amp; Found</span>
+</button>
+</div>
+</div>
+<div class="px-4 py-2">
+<h3 class="text-sm font-bold uppercase tracking-widest text-primary/80 mb-4">Priority Queue</h3>
+<!-- Report Card 1: Marketplace -->
+<div class="mb-4 @container">
+<div class="flex flex-col rounded-2xl bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 overflow-hidden shadow-sm">
+<div class="relative w-full aspect-[21/9] bg-center bg-cover" data-alt="Laptop screen showing prescription drug website" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVPi5toLSz9LmBhGDsn7H7u_4SvkwqvixPSslL9dkBTCYlMBKJgI04jlIwGC_mszl-CGofY042Kf18GFZPE8E_bRGy8jWqsnr77C2-mSJes13fFmfhc89AN9vB9w604UOuneoOV3xsTddmLWnvlwhyiQfnSqhKS7SzyutbqjgEuUtH49FgL5zk2NW8GX0pUXEQVPNau3qCfikmXZhnezn-mFku0vYgQ93QRZlCONJ-BSDL9JzzPcrChGMnbIEW4Dy6jhlkEi6tYqo");'>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2 py-1 bg-primary text-white text-[10px] font-bold rounded-full uppercase">High Priority</span>
+<span class="px-2 py-1 bg-black/60 text-white text-[10px] font-bold rounded-full backdrop-blur-md">MARKETPLACE</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-base font-bold">Report: Restricted Item Listing</h4>
+<span class="text-[10px] opacity-40">2m ago</span>
+</div>
+<p class="text-xs opacity-60 mb-2">Item: "Study Aids - Fast Delivery"</p>
+<div class="flex items-center gap-2 mb-3">
+<span class="size-2 rounded-full bg-primary animate-pulse"></span>
+<p class="text-sm font-semibold text-primary">Reason: Prohibited Items - 'Selling meds'</p>
+</div>
+<div class="bg-black/5 dark:bg-white/5 p-3 rounded-xl border-l-2 border-primary/50">
+<p class="text-xs font-medium opacity-40 uppercase mb-1">Reporter Notes</p>
+<p class="text-xs italic leading-relaxed">"This user has posted this multiple times today across different campus groups. Looks suspicious."</p>
+</div>
+</div>
+<!-- Action Toolbar -->
+<div class="grid grid-cols-2 gap-2 mt-2">
+<button class="flex items-center justify-center gap-2 h-10 rounded-full border border-black/10 dark:border-white/10 text-xs font-bold hover:bg-black/5 transition-colors">
+<span class="material-symbols-outlined text-sm">visibility_off</span>
+                                Ignore
+                            </button>
+<button class="flex items-center justify-center gap-2 h-10 rounded-full border border-black/10 dark:border-white/10 text-xs font-bold hover:bg-black/5 transition-colors">
+<span class="material-symbols-outlined text-sm">volume_off</span>
+                                Mute User
+                            </button>
+<button class="flex items-center justify-center gap-2 h-10 rounded-full bg-primary text-white text-xs font-bold shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-sm">delete</span>
+                                Delete Content
+                            </button>
+<button class="flex items-center justify-center gap-2 h-10 rounded-full bg-black dark:bg-white dark:text-black text-white text-xs font-bold">
+<span class="material-symbols-outlined text-sm">block</span>
+                                Shadowban
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Report Card 2: Social Post -->
+<div class="mb-4 @container">
+<div class="flex flex-col rounded-2xl bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 overflow-hidden shadow-sm">
+<div class="p-4 flex flex-col gap-3">
+<div>
+<div class="flex justify-between items-start mb-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-blue-500/20 text-blue-500 text-[10px] font-bold rounded-full uppercase">SOCIAL</span>
+<h4 class="text-base font-bold">Report: Harassment</h4>
+</div>
+<span class="text-[10px] opacity-40">15m ago</span>
+</div>
+<div class="flex flex-col gap-2 my-3">
+<div class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-sm text-primary">warning</span>
+<p class="font-semibold text-primary">Reason: Hate Speech / Bullying</p>
+</div>
+<div class="p-3 bg-red-500/5 dark:bg-red-500/10 rounded-xl border border-red-500/10">
+<p class="text-sm font-medium">"Everyone in the Engineering building today is a total [Redacted]. You guys smell like failure."</p>
+</div>
+</div>
+<div class="bg-black/5 dark:bg-white/5 p-3 rounded-xl">
+<p class="text-xs font-medium opacity-40 uppercase mb-1">Reporter Notes</p>
+<p class="text-xs italic leading-relaxed">"Targeting a specific group of students. Creates a hostile environment."</p>
+</div>
+</div>
+<!-- Action Toolbar -->
+<div class="grid grid-cols-2 gap-2 mt-2">
+<button class="flex items-center justify-center gap-2 h-10 rounded-full border border-black/10 dark:border-white/10 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">visibility_off</span>
+                                Ignore
+                            </button>
+<button class="flex items-center justify-center gap-2 h-10 rounded-full border border-black/10 dark:border-white/10 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">volume_off</span>
+                                Mute User
+                            </button>
+<button class="flex items-center justify-center gap-2 h-10 rounded-full bg-primary text-white text-xs font-bold">
+<span class="material-symbols-outlined text-sm">delete</span>
+                                Delete
+                            </button>
+<button class="flex items-center justify-center gap-2 h-10 rounded-full bg-black dark:bg-white dark:text-black text-white text-xs font-bold">
+<span class="material-symbols-outlined text-sm">block</span>
+                                Ban
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Report Card 3: Lost & Found -->
+<div class="mb-4 @container">
+<div class="flex flex-col rounded-2xl bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 overflow-hidden shadow-sm opacity-80">
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-green-500/20 text-green-500 text-[10px] font-bold rounded-full uppercase">LOST &amp; FOUND</span>
+<h4 class="text-base font-bold">Report: Spam</h4>
+</div>
+<span class="text-[10px] opacity-40">1h ago</span>
+</div>
+<p class="text-sm font-semibold text-primary/60 italic">Reason: Duplicate Content</p>
+<p class="text-xs opacity-60">"Lost my keys near the Quad" (Posted 4 times)</p>
+<div class="grid grid-cols-4 gap-2">
+<button class="flex items-center justify-center size-10 rounded-full bg-black/5 dark:bg-white/5"><span class="material-symbols-outlined text-sm">visibility_off</span></button>
+<button class="flex items-center justify-center size-10 rounded-full bg-black/5 dark:bg-white/5"><span class="material-symbols-outlined text-sm">volume_off</span></button>
+<button class="col-span-2 flex items-center justify-center gap-2 h-10 rounded-full bg-primary text-white text-xs font-bold"><span class="material-symbols-outlined text-sm">delete_sweep</span> Bulk Clear</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (iOS Style) -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-white/80 dark:bg-background-dark/80 ios-blur border-t border-black/5 dark:border-white/5 px-6 pb-8 pt-3">
+<div class="flex justify-between items-center max-w-md mx-auto">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl font-variation-fill">dashboard</span>
+<span class="text-[10px] font-bold">Queue</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-2xl">history</span>
+<span class="text-[10px] font-bold">History</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-2xl">group</span>
+<span class="text-[10px] font-bold">Users</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</button>
+</div>
+</div>
+</body></html>

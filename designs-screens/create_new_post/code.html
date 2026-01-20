@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Post</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1392ec",
+                        "background-light": "#ffffff",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden font-display">
+<div class="relative flex h-screen w-full flex-col max-w-[430px] mx-auto bg-background-light dark:bg-background-dark border-x border-slate-100 dark:border-slate-800 shadow-2xl">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center bg-background-light/80 dark:bg-background-dark/80 ios-blur px-4 py-3 border-b border-slate-100 dark:border-slate-800 justify-between">
+<div class="flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-slate-500">close</span>
+<span class="text-slate-500 text-sm font-medium">Cancel</span>
+</div>
+<h2 class="text-[#0d161b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] absolute left-1/2 -translate-x-1/2">Create Post</h2>
+<button class="bg-primary hover:bg-primary/90 text-white px-5 py-1.5 rounded-full text-sm font-bold transition-all shadow-sm active:scale-95">
+                Post
+            </button>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Identity Selection Section -->
+<div class="p-4 border-b border-slate-50 dark:border-slate-900">
+<p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 ml-1">Posting As</p>
+<div class="flex flex-col gap-2">
+<!-- Real Identity Option -->
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border-2 border-primary">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 border-2 border-white dark:border-slate-800 shadow-sm" data-alt="User profile picture with campus background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmArYSDSLOrmrSfVkYt4Jsvz64F1t4xJZ1iBKUu5w8CAtTfn5XBQEkUV8Q--zjtYXs3Mym-dSEwctYCul0CEIQH-h5Ni70rrwLx6L_9JvX34bEdoko_k17oU6La36qzpPv9M-AcDiNg4C9ufOm5cRl5CYR_yUTZ7Vd7i-v6CAAEFsnTJsmjEjePtDtsR2AeRDDaEtuqvQ8EC6O3J2w9X_ZppL0hgn3DRw-eziVAPgTcFaAfNzUXzoGvARVeopIUosGQeO9j2LCUfo");'>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-[#0d161b] dark:text-white text-base font-semibold leading-none">Alex Johnson</p>
+<p class="text-primary text-xs font-medium mt-1 uppercase tracking-tight">Real Identity</p>
+</div>
+<div class="shrink-0">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">check</span>
+</div>
+</div>
+</div>
+<!-- Anonymous Option -->
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark p-3 rounded-xl border border-slate-100 dark:border-slate-800 opacity-60 grayscale transition-all hover:grayscale-0 cursor-pointer">
+<div class="flex items-center justify-center aspect-square bg-slate-100 dark:bg-slate-800 rounded-full h-12 w-12">
+<span class="material-symbols-outlined text-slate-400">visibility_off</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-[#0d161b] dark:text-white text-base font-medium leading-none">Anonymous Member</p>
+<p class="text-slate-400 text-xs font-medium mt-1 uppercase tracking-tight">Pseudonymous Alias</p>
+</div>
+<div class="shrink-0">
+<div class="size-6 rounded-full border border-slate-200 dark:border-slate-700"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Input Section -->
+<div class="px-4 py-5">
+<div class="flex flex-col w-full">
+<textarea class="w-full min-h-[180px] text-xl font-normal leading-relaxed text-slate-800 dark:text-slate-200 placeholder:text-slate-300 dark:placeholder:text-slate-700 border-none bg-transparent p-0 focus:ring-0 resize-none" placeholder="What's happening on campus?"></textarea>
+</div>
+</div>
+<!-- Image/Video Preview Area (Horizontal Scroll) -->
+<div class="px-4 flex gap-3 overflow-x-auto no-scrollbar pb-4">
+<div class="relative min-w-[140px] h-[140px] rounded-xl overflow-hidden shadow-sm group">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="University building architecture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQMHV4NwKvSgusSWylE0zKfl07M3Uuqgon85vbP3pLnbWKjUpR825Rjwa3cUNgbHK-aB9LaoRol7yfS97FvtzkRSH6lUvbAIcSswe-PGCEikUVUMKDuKoMfUprO4EK0EwrSaTIQDvBh-vOKKD5szt97K9QndfqqMEOvxCyY1-iIiqC0S4ZmhPJ4lL8g46Qjtf4GemFvd7XUMGxTHuxBl7Zh5IntIBU5y5oM1bJvF1v35ps45TQiEkD_80BAI_0uT6UMmgQkiQ3yZs');"></div>
+<button class="absolute top-1.5 right-1.5 bg-black/50 text-white rounded-full p-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<div class="relative min-w-[140px] h-[140px] rounded-xl overflow-hidden shadow-sm group border-2 border-dashed border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-slate-400 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-2xl mb-1">add_a_photo</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Add Photo</span>
+</div>
+</div>
+<!-- Progress Bar Section -->
+<div class="px-4 py-4 mt-auto">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Capacity</span>
+</div>
+<span class="text-xs font-bold text-slate-900 dark:text-slate-100">128/280</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 45%;"></div>
+</div>
+</div>
+</main>
+<!-- Fixed Toolbar -->
+<div class="fixed bottom-0 w-full max-w-[430px] bg-background-light/95 dark:bg-background-dark/95 ios-blur border-t border-slate-100 dark:border-slate-800 px-6 py-4 flex items-center justify-between">
+<div class="flex gap-8 items-center">
+<button class="group flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl font-light">image</span>
+<span class="text-[10px] font-bold">4/4</span>
+</button>
+<button class="group flex flex-col items-center gap-1 text-slate-400 dark:text-slate-600 cursor-not-allowed opacity-40">
+<span class="material-symbols-outlined text-2xl font-light">videocam</span>
+<span class="text-[10px] font-bold">Video</span>
+</button>
+<button class="group flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl font-light">poll</span>
+<span class="text-[10px] font-bold">Poll</span>
+</button>
+<button class="group flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl font-light">tag</span>
+<span class="text-[10px] font-bold">Topic</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-slate-100 dark:bg-slate-800"></div>
+<button class="flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">more_horiz</span>
+</button>
+</div>
+</div>
+</body></html>

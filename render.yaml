@@ -1,0 +1,29 @@
+services:
+  # Gateway Service
+  - type: web
+    name: unisocial-gateway
+    env: node
+    rootDir: services/gateway
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    # Add other env vars in the Render Dashboard Config
+    
+  # User Service
+  - type: web
+    name: unisocial-user-service
+    env: node
+    rootDir: services/user-service
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
