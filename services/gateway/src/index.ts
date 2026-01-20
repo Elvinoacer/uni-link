@@ -64,6 +64,10 @@ const getUserServiceUrl = () => {
   if (process.env.USER_SERVICE_URL) {
     return process.env.USER_SERVICE_URL;
   }
+  // Fallback for Render Internal DNS (Service Name)
+  if (process.env.NODE_ENV === 'production') {
+    return `http://unisocial-user-service:10000`;
+  }
   return `http://localhost:${process.env.USER_SERVICE_PORT || 3001}`;
 };
 
@@ -76,7 +80,7 @@ app.use('/api/auth', createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/auth': '/auth' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -95,7 +99,7 @@ app.use('/api/users', optionalAuthMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/users': '/users' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -109,7 +113,7 @@ app.use('/api/posts', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/posts': '/posts' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -123,7 +127,7 @@ app.use('/api/polls', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/polls': '/polls' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -137,7 +141,7 @@ app.use('/api/notifications', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/notifications': '/notifications' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -151,7 +155,7 @@ app.use('/api/marketplace', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/marketplace': '/marketplace' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -165,7 +169,7 @@ app.use('/api/study', optionalAuthMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/study': '/study' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -179,7 +183,7 @@ app.use('/api/events', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/events': '/events' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -193,7 +197,7 @@ app.use('/api/gallery', optionalAuthMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/gallery': '/gallery' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -207,7 +211,7 @@ app.use('/api/stories', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/stories': '/stories' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -221,7 +225,7 @@ app.use('/api/communities', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/communities': '/communities' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -235,7 +239,7 @@ app.use('/api/portfolio', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/portfolio': '/portfolio' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -249,7 +253,7 @@ app.use('/api/search', optionalAuthMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/search': '/search' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -263,7 +267,7 @@ app.use('/api/upload', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/upload': '/upload' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -277,7 +281,7 @@ app.use('/api/uploads', createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/uploads': '/uploads' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -291,7 +295,7 @@ app.use('/api/messaging', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/messaging': '/chat' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -305,7 +309,7 @@ app.use('/api/resources', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/resources': '/resources' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -319,7 +323,7 @@ app.use('/api/courses', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/courses': '/courses' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
@@ -333,7 +337,7 @@ app.use('/api/rag', authMiddleware, createProxyMiddleware({
   changeOrigin: true,
   pathRewrite: { '^/api/rag': '/rag' },
   onError: (err, _req, res) => {
-    console.error('Proxy error:', err.message);
+    console.error(`[Proxy Error] Target: ${USER_SERVICE_URL} | Error:`, err.message);
     (res as express.Response).status(502).json({
       success: false,
       error: { code: 'PROXY_ERROR', message: 'Service unavailable' }
